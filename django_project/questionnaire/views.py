@@ -6,4 +6,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello, world! This is the questionnaire screen")
+    return HttpResponse("Hello, world! This is the Index screen")
+
+def questtionnaire(request):
+    return HttpResponse("This is the questionnaire")
