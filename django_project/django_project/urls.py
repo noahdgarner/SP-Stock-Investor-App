@@ -19,6 +19,6 @@ from questionnaire import views
 
 urlpatterns = [
     url(r'^', views.index, name='index'),
-    url(r'^questionnaire/', views.questionnaire, name='questionnaire'),
+    url(r'^questionnaire/', views.form_view, name='form_view'),
     url(r'^admin/', include(admin.site.urls)),
 ]

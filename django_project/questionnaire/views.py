@@ -8,5 +8,5 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello, world! This is the Index screen")
 
-def questtionnaire(request):
+def form_view(request):
     return HttpResponse("This is the questionnaire")
