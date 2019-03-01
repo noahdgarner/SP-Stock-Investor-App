@@ -16,11 +16,12 @@ class user(models.Model):
 
     Financial_Situation = models.PositiveIntegerField(validators=[MinValueValidator(1)])
 
-    Income = models.PositiveDecimalField()
+    #TODO require positive
+    Income = models.DecimalField()
 
     investing_knowledge = models.PositiveIntegerField(validators=[MinValueValidator(1)])
 
-    investing_amount = models.PositiveDecimalField(validators=[MinValueValidator(1)])
+    investing_amount = models.DecimalField(validators=[MinValueValidator(1)])
 
     risk_tolerance = models.PositiveIntegerField(validators=[MinValueValidator(1)])
 
