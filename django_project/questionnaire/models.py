@@ -7,6 +7,9 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 
 class user(models.Model):
+
+    #TODO
+    user_email = models.CharField(max_length=20)
     date_of_birth = models.DateField()
 
     name = models.CharField(max_length = 40)
@@ -27,3 +30,4 @@ class user(models.Model):
 
     #TODO
     #areas of interest
+
