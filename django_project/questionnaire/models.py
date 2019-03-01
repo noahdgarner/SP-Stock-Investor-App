@@ -9,10 +9,10 @@ from django.core.validators import MinValueValidator
 class user(models.Model):
 
     #TODO
-    user_email = models.CharField(max_length=20)
+    user_email = models.CharField(max_length=20, primary_key=True)
     date_of_birth = models.DateField()
 
-    name = models.CharField(max_length = 40)
+    name = models.CharField(max_length = 40, default="user test")
 
     #do you need to be 18?
     Age = models.PositiveIntegerField(validators=[MinValueValidator(18)])
