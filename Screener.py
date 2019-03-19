@@ -17,4 +17,17 @@ order_direction = 'asc'
 primary_only = False
 page_size = 100
 
-pprint(security_api.screen_securities(logic=logic))
+
+#TODO Fix for US exchanges only
+
+output = security_api.screen_securities(logic=logic)
+
+
+company_screen_results = []
+
+for i in range(0, 10):
+    company_screen_results.append(output[i].security.ticker)
+
+print(company_screen_results)
+
+#pprint(security_api.screen_securities(logic=logic))
