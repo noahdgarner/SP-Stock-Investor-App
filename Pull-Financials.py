@@ -5,17 +5,31 @@ from intrinio_sdk.rest import ApiException
 from pprint import pprint
 import urllib.request
 import json
-import DataPointReceiver
+import DataPointReceiver as dpr
+import test_screen_results
+import pandas as pd
 
 
-companies = ['ABCB', 'ABMD', 'ABR']
+companies = ['ABCB', 'ABMD', 'AAPL']
 
-company = 'NTNX'
-tag = 'revenuegrowth', 'marketcap'
+company = 'AAPL'
+tag = 'revenuegrowth', 'marketcap', 'trailing_dividend_yield'
 # tag = 'revenuegrowth' #this does
 
+# for i in range(0, len(test_screen_results.test)):
+#     print(test_screen_results.test[i])
 
-DataPointReceiver.make_request(companies, tag)
+
+l = dpr.make_screen_request()
+
+frame = pd.DataFrame(l)
+
+print(frame)
+
+#dpr.make_screen_request(dpr.build_between(.5, 1.1, "beta"))
+# dpr.make_data_request(companies, tag)
+# DataPointReceiver.make_data_request(companies, tag)
+#dpr.make_screen_request()
 
 # contents = urllib.request.urlopen("https://api.intrinio.com/data_point?identifier=TSLA,NTNX&item=marketcap,ceo&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1")
 # # pprint(type(contents))

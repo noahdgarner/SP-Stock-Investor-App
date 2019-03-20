@@ -5,8 +5,7 @@ from intrinio_sdk.rest import ApiException
 from pprint import pprint
 import EquityScreen
 
-
-intrinio_sdk.ApiClient().configuration.api_key['api_key'] = 'OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi'
+api_key = 'OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi'
 
 company_api = intrinio_sdk.CompanyApi()
 security_api = intrinio_sdk.SecurityApi()
