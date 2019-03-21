@@ -25,7 +25,19 @@ def build_between(lower, upper, term):
     return logic
 
 
-def get_logic():
+def build_view_logic(items):
+
+    term = ","
+
+    for i in items:
+        term += i + "~gte~-999999,"
+
+    term = term.rstrip(',')
+
+    return term
+
+
+def get_screen_logic():
 
     defensive = ','.join(EquityScreen.defensive_basic)
     return defensive
@@ -38,21 +50,31 @@ def run_screen(request):
     decode = contents.read().decode('utf-8')
     json_obj = json.loads(decode)
 
-
     # returns a list of dictionaries
     return json_obj['data']
 
 
 def make_screen_request():
 
-    logic = get_logic()
+    # TODO pass lists into make_screen_request
 
-    screen_request = "https://api.intrinio.com/securities/search?conditions="+logic+"&api_key="+api_key
+    view_items = ['debttoequity', 'beta', 'pricetoearnings']
 
-    #print(screen_request)
+    screen_items = ['trailing_dividiend_yield', "market_cap"]
+
+    base = "https://api.intrinio.com/securities/search?conditions="
+
+    screen_logic = get_screen_logic()
+
+    view_logic = build_view_logic(view_items)
+
+    screen_request = base+screen_logic+view_logic+"&api_key="+api_key
+
+    # print(screen_request)
     print("requesting screen ", screen_request)
 
-    return run_screen(screen_request)
+    # return run_screen(screen_request)
+
 
 def make_data_request(company_list, tag_list):
 
@@ -64,4 +86,3 @@ def make_data_request(company_list, tag_list):
     print(request_str)
     # contents = urllib.request.urlopen(
     #     "https://api.intrinio.com/data_point?identifier=TSLA,NTNX&item=marketcap,ceo&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1")
-

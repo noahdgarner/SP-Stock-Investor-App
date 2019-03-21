@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c93a9ea-ad40-44f6-bf43-e3fb516364c1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_screen_results.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Stock.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Stock.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3c93a9ea-ad40-44f6-bf43-e3fb516364c1" name="Default" comment="Updated screening logic and handling of screen return into dataframe">
+      <change afterPath="$PROJECT_DIR$/analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataPointReceiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataPointReceiver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EquityScreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/EquityScreen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pull-Financials.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pull-Financials.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screener.py" beforeDir="false" afterPath="$PROJECT_DIR$/Screener.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output_testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/output_testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_screen_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_screen_results.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,13 +20,32 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/url_testing">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="68">
+                    <caret line="4" column="68" lean-forward="true" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Screener.py">
+        <entry file="file://$PROJECT_DIR$/Pull-Financials.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="323">
+              <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -39,12 +54,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pull-Financials.py">
+        <entry file="file://$PROJECT_DIR$/analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="92">
+              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataPointReceiver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="399">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -63,19 +78,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Screen_Builder.py">
+        <entry file="file://$PROJECT_DIR$/User.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_screen_results.py">
+        <entry file="file://$PROJECT_DIR$/EquityScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output_testing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="25" column="4" selection-start-line="25" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -101,23 +125,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/User.py" />
         <option value="$PROJECT_DIR$/UserRisk.py" />
         <option value="$PROJECT_DIR$/Screen.py" />
         <option value="$PROJECT_DIR$/Screen_Builder.py" />
         <option value="$PROJECT_DIR$/data" />
         <option value="$PROJECT_DIR$/Screener.py" />
-        <option value="$PROJECT_DIR$/test_screen_results.py" />
-        <option value="$PROJECT_DIR$/Pull-Financials.py" />
         <option value="$PROJECT_DIR$/EquityScreen.py" />
+        <option value="$PROJECT_DIR$/test_screen_results.py" />
+        <option value="$PROJECT_DIR$/url_testing" />
+        <option value="$PROJECT_DIR$/report_generator.py" />
+        <option value="$PROJECT_DIR$/analyzer.py" />
         <option value="$PROJECT_DIR$/output_testing.py" />
+        <option value="$PROJECT_DIR$/Pull-Financials.py" />
         <option value="$PROJECT_DIR$/DataPointReceiver.py" />
+        <option value="$PROJECT_DIR$/User.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="16" />
-    <option name="y" value="39" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-60" />
+    <option name="y" value="-17" />
     <option name="width" value="1938" />
     <option name="height" value="991" />
   </component>
@@ -240,7 +267,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Screener" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="analyzer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Stock" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -252,7 +279,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Screener.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyzer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,10 +312,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Pull-Financials" />
-        <item itemvalue="Python.EquityScreen" />
         <item itemvalue="Python.DataPointReceiver" />
-        <item itemvalue="Python.Screener" />
         <item itemvalue="Python.output_testing" />
+        <item itemvalue="Python.analyzer" />
+        <item itemvalue="Python.EquityScreen" />
       </list>
     </recent_temporary>
   </component>
@@ -303,18 +330,25 @@
       <option name="presentableId" value="Default" />
       <updated>1550124845758</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated screening logic and handling of screen return into dataframe">
+      <created>1553062988436</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1553062988436</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="16" y="39" width="1938" height="991" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12210526" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12223393" />
       <window_info id="Structure" order="1" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3974359" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36944744" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -347,56 +381,15 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated screening logic and handling of screen return into dataframe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated screening logic and handling of screen return into dataframe" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UserRisk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EquityScreen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Output.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output_testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Screen_Builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_screen_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -412,7 +405,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Screener.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
+        <state relative-caret-position="85">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
@@ -420,20 +413,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UserRisk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Output.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report_generator.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screen_Builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="62" lean-forward="true" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_screen_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="15972" selection-start-line="2" selection-start-column="15972" selection-end-line="2" selection-end-column="15972" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/url_testing">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="68" lean-forward="true" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output_testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="25" column="4" selection-start-line="25" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Pull-Financials.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="323">
+          <caret line="19" column="51" lean-forward="true" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EquityScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DataPointReceiver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="399">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

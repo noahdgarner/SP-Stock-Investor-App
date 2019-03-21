@@ -8,6 +8,7 @@ import json
 import DataPointReceiver as dpr
 import test_screen_results
 import pandas as pd
+import test_screen_results
 
 
 companies = ['ABCB', 'ABMD', 'AAPL']
@@ -20,11 +21,16 @@ tag = 'revenuegrowth', 'marketcap', 'trailing_dividend_yield'
 #     print(test_screen_results.test[i])
 
 
-l = dpr.make_screen_request()
+dpr.make_screen_request()
 
-frame = pd.DataFrame(l)
 
-print(frame)
+#l = dpr.make_screen_request()
+
+#frame = pd.DataFrame(l)
+
+# frame = pd.DataFrame(test_screen_results.test2)
+#
+# print(frame)
 
 #dpr.make_screen_request(dpr.build_between(.5, 1.1, "beta"))
 # dpr.make_data_request(companies, tag)

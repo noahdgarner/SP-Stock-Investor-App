@@ -19,6 +19,18 @@ output = [{'data':[
               'share_class_figi': None,
               'ticker': 'ABCB'}}]
 
-print(output)
+# print(output)
+#
+# print(output[0]['security']['ticker'])
 
-print(output[0]['security']['ticker'])
+items = ['debttoequity', 'beta', 'pricetoearnings']
+
+term = ""
+
+for i in items:
+    term += i+"~gte~-999999,"
+
+term = term.rstrip(',')
+term = term+"&"
+
+print(term)
