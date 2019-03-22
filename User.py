@@ -25,4 +25,5 @@ class User:
     def build_screens(self):
 
         if(self.screens["Defensive"] == None):
+            Screen_Builder.build_screen()
             print("building Defensive screen in User.build_screen()")

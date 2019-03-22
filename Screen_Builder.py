@@ -29,17 +29,17 @@ class screen_builder():
 
         self.get_finance_metrics()
         self.get_other_metrics()
+        self.get_sector_medians()
         self.value_builder()
 
     def get_finance_metrics(self):
 
         self.finance_metrics = []
+        basic = self.excel_sheet['Objective'] == "Standard"
+        unique = self.excel_sheet['Objective'] == self.objective
 
-        if(self.objective == "Defensive"):
-            self.finance_metrics = defensive_basic
-
-        elif(self.objective == "Risky"):
-            self.finance_metrics = risky_basic
+        final_critera = basic | unique
+        print(self.excel_sheet[final_critera])
 
     def get_other_metrics(self):
 
@@ -61,7 +61,8 @@ class screen_builder():
         # to the financial ratios and metrics chosen in get_finance_metrics()
         # for now, they are assigned statically in get_finance_metrics()
 
-        print(self.excel_sheet)
+
+        # 3/22/2019 May not use this as originally intended
 
         if (self.objective == "Defensive"):
 
