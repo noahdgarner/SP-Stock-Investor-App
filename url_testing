@@ -1,0 +1,16 @@
+https://api.intrinio.com/securities/search?conditions=marketcap~gte~2000000000,trailing_dividend_yield~gte~.025,trailing_dividend_yield~lte~.04,debttoequity~lt~.99&us_only=Yes&page_size=200&order_column=debttoequity&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
+
+https://api.intrinio.com/securities/search?conditions=marketcap~gte~2000000000,trailing_dividend_yield~gte~.025,trailing_dividend_yield~lte~.04,debttoequity~gte~-999999&primary_only=True&page_size=400&order_column=debttoequity&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
+
+
+search?conditions=marketcap~gte~2000000000
+
+https://api.intrinio.com/securities/search?conditions=marketcap~gte~2000000000&?order_column=marketcap&order_direction=asc&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
+
+?order_column=marketcap&order_direction=asc&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
+
+# Financials for a company
+
+https://api.intrinio.com/fundamentals/AAPL-income_statement-2018-Q1/standardized_financials&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
+
+https://api-v2.intrinio.com/companies/AAPL/fundamentals?fiscal_year=2018&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
