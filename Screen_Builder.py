@@ -13,6 +13,46 @@ risky_basic = [
 ]
 
 
+class UrlBuilder():
+
+    def __init__(self):
+        self.api_key = "OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1"
+
+    #TODO Indexing not working
+    def build_between(lower, between_metrics):
+        print("build between")
+        print(between_metrics)
+        logic = ""
+        for i in range(0, len(between_metrics.index)):
+            logic = logic+"~gte~" + str(between_metrics.iloc[i]["lower bound"]) + "," + between_metrics.iloc[i]["Intrinio Tag"] + "~lte~" + str(between_metrics.iloc["upper bound"][i])
+
+        print(logic)
+
+        # logic = term + "~gte~" + str(lower) + "," + term + "~lte~" + str(upper)
+        # print(logic)
+        return logic
+
+    def build_view_logic(items):
+
+        term = ","
+
+        for i in items:
+            term += i + "~gte~-999999,"
+
+        term = term.rstrip(',')
+
+        return term
+
+    #TODO Pass metrics for view only and for rankings
+
+    def build_url(self, screen_metrics):
+
+        standard = screen_metrics['Operation'] != "between"
+        between = screen_metrics['Operation'] == "between"
+
+        self.build_between(screen_metrics[between])
+
+
 class screen_builder():
 
     def __init__(self, industry_input, sector_input, objective):
@@ -31,6 +71,9 @@ class screen_builder():
         self.get_other_metrics()
         self.get_sector_medians()
         self.value_builder()
+        test = UrlBuilder()
+        test.build_url(self.finance_metrics)
+        #UrlBuilder.build_url(self.finance_metrics)
 
     def get_finance_metrics(self):
 
@@ -39,7 +82,7 @@ class screen_builder():
         unique = self.excel_sheet['Objective'] == self.objective
 
         final_critera = basic | unique
-        print(self.excel_sheet[final_critera])
+        self.finance_metrics = self.excel_sheet[final_critera]
 
     def get_other_metrics(self):
 
@@ -73,8 +116,6 @@ class screen_builder():
 
             self.finance_values.append(".10")
             self.finance_values.append("1")
-
-
 
     def metric_value_builder(self):
 

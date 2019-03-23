@@ -5,7 +5,7 @@ from intrinio_sdk.rest import ApiException
 from pprint import pprint
 import urllib.request
 import json
-import DataPointReceiver as dpr
+import UrlBuilder as dpr
 import test_screen_results
 import pandas as pd
 import test_screen_results
