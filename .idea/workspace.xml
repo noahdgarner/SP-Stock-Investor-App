@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c93a9ea-ad40-44f6-bf43-e3fb516364c1" name="Default" comment="Financial Values imported from excel">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataPointReceiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/UrlBuilder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Financial Values.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Financial Values.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pull-Financials.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pull-Financials.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screen_Builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Screen_Builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service_Testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Service_Testing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
-    </list>
+    <list default="true" id="3c93a9ea-ad40-44f6-bf43-e3fb516364c1" name="Default" comment="URLbuilder" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Screen_Builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="131">
+              <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -337,19 +329,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553284579089</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="URLbuilder">
+      <created>1553319851544</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1553319851544</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12223393" />
       <window_info id="Structure" order="1" weight="0.24973656" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23510292" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23510292" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -386,7 +384,8 @@
     <MESSAGE value="Updated screening logic and handling of screen return into dataframe" />
     <MESSAGE value="Updated screening logic and handling of screen return into dataframe. Feeling very lost :( &#10;What do I do now?" />
     <MESSAGE value="Financial Values imported from excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Financial Values imported from excel" />
+    <MESSAGE value="URLbuilder" />
+    <option name="LAST_COMMIT_MESSAGE" value="URLbuilder" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/data">
@@ -506,8 +505,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Screen_Builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="131">
+          <caret line="18" column="69" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
