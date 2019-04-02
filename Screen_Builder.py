@@ -21,15 +21,15 @@ class UrlBuilder():
     #TODO Indexing not working
     def build_between(lower, between_metrics):
         print("build between")
+        print(type(between_metrics))
         print(between_metrics)
         logic = ""
-        for i in range(0, len(between_metrics.index)):
-            logic = logic+"~gte~" + str(between_metrics.iloc[i]["lower bound"]) + "," + between_metrics.iloc[i]["Intrinio Tag"] + "~lte~" + str(between_metrics.iloc["upper bound"][i])
+        for i in between_metrics.index:
+            logic = logic+between_metrics["Intrinio Tag"].loc[i] +"~gte~" + str(between_metrics["lower bound"].loc[i]) + "," + between_metrics["Intrinio Tag"].loc[i] + "~lte~" + str(between_metrics["upper bound"].loc[i]) + ','
+
+        logic = logic.rstrip(',')
 
         print(logic)
-
-        # logic = term + "~gte~" + str(lower) + "," + term + "~lte~" + str(upper)
-        # print(logic)
         return logic
 
     def build_view_logic(items):
