@@ -20,38 +20,89 @@ class UrlBuilder():
 
     #TODO Indexing not working
     def build_between(lower, between_metrics):
-        print("build between")
-        print(type(between_metrics))
-        print(between_metrics)
         logic = ""
         for i in between_metrics.index:
             logic = logic+between_metrics["Intrinio Tag"].loc[i] +"~gte~" + str(between_metrics["lower bound"].loc[i]) + "," + between_metrics["Intrinio Tag"].loc[i] + "~lte~" + str(between_metrics["upper bound"].loc[i]) + ','
+
+        print(logic)
+        logic = logic.rstrip(',')
+        return logic
+
+
+    # view_items = ['debttoequity', 'beta', 'pricetoearnings']
+    #
+    # screen_items = ['trailing_dividiend_yield', "market_cap"]
+    #
+    # base = "https://api.intrinio.com/securities/search?conditions="
+    #
+    # screen_logic = get_screen_logic()
+    #
+    # view_logic = build_view_logic(view_items)
+    #
+    # screen_request = base+screen_logic+view_logic+"&api_key="+api_key
+    #
+    # print("requesting screen ", screen_request)
+
+    def build_items_logic(self, metrics):
+        logic = ""
+        print("build_items_logic")
+        for i in metrics.index:
+            logic = logic + metrics["Intrinio Tag"].loc[i] + metrics["Operation"].loc[i] + str(float(metrics["value"].loc[i])) +","
 
         logic = logic.rstrip(',')
 
         print(logic)
         return logic
 
-    def build_view_logic(items):
+    def build_view_logic(self, items):
 
-        term = ","
+        # term = ","
+        #
+        # for i in items:
+        #     term += i + "~gte~-999999,"
+        #
+        # term = term.rstrip(',')
 
-        for i in items:
-            term += i + "~gte~-999999,"
-
-        term = term.rstrip(',')
-
-        return term
+        return ""
 
     #TODO Pass metrics for view only and for rankings
 
     def build_url(self, screen_metrics):
 
-        standard = screen_metrics['Operation'] != "between"
-        between = screen_metrics['Operation'] == "between"
+        base = "https://api.intrinio.com/securities/search?conditions="
+        api_key = self.api_key
+        api = "&api_key=" + api_key
 
-        self.build_between(screen_metrics[between])
+        standard_view = (screen_metrics['Operation'] != "between") & (screen_metrics['Type'] == 'View')
+        standard_search = (screen_metrics['Operation'] != "between") & (screen_metrics['Type'] == 'Search')
 
+        between = (screen_metrics['Operation'] == "between") & (screen_metrics['Type'] == 'Search')
+        between_logic = self.build_between(screen_metrics[between])
+        standard_logic = self.build_items_logic(screen_metrics[standard_search])
+
+        view_logic = self.build_view_logic(screen_metrics[standard_view])
+
+# https://api.intrinio.com/securities/search?conditions=marketcap~gte~2000000000&?order_column=marketcap&order_direction=asc&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
+
+        print("*****")
+
+        print(between_logic)
+        print(standard_logic)
+        print(view_logic)
+
+        if between_logic == "":
+            screen_logic = standard_logic
+        else:
+            screen_logic = standard_logic + "," + between_logic
+
+        if view_logic != "":
+            screen_logic = screen_logic + view_logic
+
+        #TODO order_by logic
+
+        screen_request = base + screen_logic  + api
+
+        print(screen_request)
 
 class screen_builder():
 

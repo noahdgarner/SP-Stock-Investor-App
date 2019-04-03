@@ -70,11 +70,7 @@ def make_screen_request():
 
     screen_request = base+screen_logic+view_logic+"&api_key="+api_key
 
-    # print(screen_request)
     print("requesting screen ", screen_request)
-
-    # return run_screen(screen_request)
-
 
 def make_data_request(company_list, tag_list):
 
