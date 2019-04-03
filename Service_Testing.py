@@ -15,7 +15,7 @@ def build_safe_user():
 def build_screen():
 
     print("Service_Testing.py build_screen")
-    test_screen = Screen_Builder.screen_builder("X", "Y", "Defensive")
+    test_screen = Screen_Builder.screen_builder("X", "Y", "Risky")
     test_screen.build_screen()
 
 build_screen()

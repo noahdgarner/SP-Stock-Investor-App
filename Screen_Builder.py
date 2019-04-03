@@ -22,12 +22,12 @@ class UrlBuilder():
     def build_between(lower, between_metrics):
         logic = ""
         for i in between_metrics.index:
-            logic = logic+between_metrics["Intrinio Tag"].loc[i] +"~gte~" + str(between_metrics["lower bound"].loc[i]) + "," + between_metrics["Intrinio Tag"].loc[i] + "~lte~" + str(between_metrics["upper bound"].loc[i]) + ','
+            logic = logic+between_metrics["Intrinio Tag"].loc[i] +"~gte~" + \
+                    str(between_metrics["lower bound"].loc[i]) + "," + between_metrics["Intrinio Tag"].loc[i] + \
+                    "~lte~" + str(between_metrics["upper bound"].loc[i]) + ','
 
-        print(logic)
         logic = logic.rstrip(',')
         return logic
-
 
     # view_items = ['debttoequity', 'beta', 'pricetoearnings']
     #
@@ -45,25 +45,35 @@ class UrlBuilder():
 
     def build_items_logic(self, metrics):
         logic = ""
-        print("build_items_logic")
         for i in metrics.index:
-            logic = logic + metrics["Intrinio Tag"].loc[i] + metrics["Operation"].loc[i] + str(float(metrics["value"].loc[i])) +","
+            logic = logic + metrics["Intrinio Tag"].loc[i] + metrics["Operation"].loc[i] + \
+                    str(float(metrics["value"].loc[i])) + ","
 
         logic = logic.rstrip(',')
 
-        print(logic)
         return logic
 
-    def build_view_logic(self, items):
+    def build_view_logic(self, metrics):
 
-        # term = ","
-        #
-        # for i in items:
-        #     term += i + "~gte~-999999,"
-        #
-        # term = term.rstrip(',')
+        print("build view logic")
+        logic = ""
+        for i in metrics.index:
+            logic = logic + metrics["Intrinio Tag"].loc[i] + "~gt~-9999999,"
 
-        return ""
+        logic = logic.rstrip(',')
+
+        return logic
+
+    def build_order_logic(self, metrics):
+        # There is potential here to choose one item that makes the most sense. For now we just pass
+        # in one metric which returns logic for it.
+
+        logic = ""
+        for i in metrics.index:
+            logic = logic+"&order_column=" + metrics["Intrinio Tag"].loc[i] + "&order_direction=" \
+                    + metrics["Operation"].loc[i]
+
+        return logic
 
     #TODO Pass metrics for view only and for rankings
 
@@ -72,23 +82,26 @@ class UrlBuilder():
         base = "https://api.intrinio.com/securities/search?conditions="
         api_key = self.api_key
         api = "&api_key=" + api_key
+        us_only = "&us_only=Yes"
+        page_size = "&page_size=200"
+
+        # Index of appropriate variables from data frame
 
         standard_view = (screen_metrics['Operation'] != "between") & (screen_metrics['Type'] == 'View')
         standard_search = (screen_metrics['Operation'] != "between") & (screen_metrics['Type'] == 'Search')
-
+        order = screen_metrics['Type'] == "Order"
         between = (screen_metrics['Operation'] == "between") & (screen_metrics['Type'] == 'Search')
+
+        # Gets text from each function for each part of the request URL. Input is the appropriately
+        # sliced portion of the Dataframe
+
         between_logic = self.build_between(screen_metrics[between])
         standard_logic = self.build_items_logic(screen_metrics[standard_search])
-
+        order_logic = self.build_order_logic(screen_metrics[order])
         view_logic = self.build_view_logic(screen_metrics[standard_view])
 
-# https://api.intrinio.com/securities/search?conditions=marketcap~gte~2000000000&?order_column=marketcap&order_direction=asc&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
-
-        print("*****")
-
-        print(between_logic)
-        print(standard_logic)
-        print(view_logic)
+        # https://api.intrinio.com/securities/search?conditions=marketcap~gte~
+        # 2000000000&?order_column=marketcap&order_direction=asc&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
 
         if between_logic == "":
             screen_logic = standard_logic
@@ -96,13 +109,17 @@ class UrlBuilder():
             screen_logic = standard_logic + "," + between_logic
 
         if view_logic != "":
-            screen_logic = screen_logic + view_logic
+            screen_logic = screen_logic + "," + view_logic
+
+        if order_logic != "":
+            screen_logic = screen_logic + order_logic
 
         #TODO order_by logic
 
-        screen_request = base + screen_logic  + api
+        screen_request = base + screen_logic  + us_only + page_size + api
 
         print(screen_request)
+
 
 class screen_builder():
 
