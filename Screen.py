@@ -7,8 +7,8 @@ class Screen():
         self.objective = None
         self.Reasoning = []
 
-        self.industry
-        self.risk_tolerance
+        self.industry = None
+        self.risk_tolerance = None
 
 
     def get_metrics(self):

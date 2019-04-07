@@ -13,12 +13,19 @@ risky_basic = [
 ]
 
 
-class UrlBuilder():
+class screen_builder():
 
-    def __init__(self):
+    def __init__(self, industry_input, sector_input, objective):
+        self.finance_metrics = []
+        self.finance_values = []
+        self.other_metrics = []
+        self.objective = objective
+        self.sector_medians = []
+        self.industry = industry_input
+        self.sector = sector_input
+        self.excel_sheet = pd.read_excel("Financial Values.xlsx", sheet_name="Sheet1")
         self.api_key = "OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1"
 
-    #TODO Indexing not working
     def build_between(lower, between_metrics):
         logic = ""
         for i in between_metrics.index:
@@ -28,20 +35,6 @@ class UrlBuilder():
 
         logic = logic.rstrip(',')
         return logic
-
-    # view_items = ['debttoequity', 'beta', 'pricetoearnings']
-    #
-    # screen_items = ['trailing_dividiend_yield', "market_cap"]
-    #
-    # base = "https://api.intrinio.com/securities/search?conditions="
-    #
-    # screen_logic = get_screen_logic()
-    #
-    # view_logic = build_view_logic(view_items)
-    #
-    # screen_request = base+screen_logic+view_logic+"&api_key="+api_key
-    #
-    # print("requesting screen ", screen_request)
 
     def build_items_logic(self, metrics):
         logic = ""
@@ -55,7 +48,6 @@ class UrlBuilder():
 
     def build_view_logic(self, metrics):
 
-        print("build view logic")
         logic = ""
         for i in metrics.index:
             logic = logic + metrics["Intrinio Tag"].loc[i] + "~gt~-9999999,"
@@ -100,9 +92,6 @@ class UrlBuilder():
         order_logic = self.build_order_logic(screen_metrics[order])
         view_logic = self.build_view_logic(screen_metrics[standard_view])
 
-        # https://api.intrinio.com/securities/search?conditions=marketcap~gte~
-        # 2000000000&?order_column=marketcap&order_direction=asc&api_key=OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1
-
         if between_logic == "":
             screen_logic = standard_logic
         else:
@@ -114,24 +103,8 @@ class UrlBuilder():
         if order_logic != "":
             screen_logic = screen_logic + order_logic
 
-        #TODO order_by logic
-
         screen_request = base + screen_logic  + us_only + page_size + api
-
-        print(screen_request)
-
-
-class screen_builder():
-
-    def __init__(self, industry_input, sector_input, objective):
-        self.finance_metrics = []
-        self.finance_values = []
-        self.other_metrics = []
-        self.objective = objective
-        self.sector_medians = []
-        self.industry = industry_input
-        self.sector = sector_input
-        self.excel_sheet = pd.read_excel("Financial Values.xlsx", sheet_name="Sheet1")
+        return screen_request
 
     def build_screen(self):
 
@@ -139,8 +112,7 @@ class screen_builder():
         self.get_other_metrics()
         self.get_sector_medians()
         self.value_builder()
-        test = UrlBuilder()
-        test.build_url(self.finance_metrics)
+        print(self.build_url(self.finance_metrics))
         #UrlBuilder.build_url(self.finance_metrics)
 
     def get_finance_metrics(self):
@@ -188,3 +160,7 @@ class screen_builder():
     def metric_value_builder(self):
 
         print("metric_value_builder")
+
+    def run_screen(self):
+        print("run_screen")
+        # contents = urllib.request.urlopen(self.screen_url)
