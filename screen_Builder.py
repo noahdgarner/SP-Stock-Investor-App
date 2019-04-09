@@ -13,19 +13,19 @@ risky_basic = [
 ]
 
 
-class screen_builder():
+class screen_Builder():
 
-    def __init__(self, industry_input, sector_input, objective):
+    def __init__(self, industry_input, objective):
         self.finance_metrics = []
         self.finance_values = []
         self.other_metrics = []
         self.objective = objective
         self.sector_medians = []
         self.industry = industry_input
-        self.sector = sector_input
         self.excel_sheet = pd.read_excel("Financial Values.xlsx", sheet_name="Sheet1")
         self.api_key = "OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1"
         self.screen_url = None
+        self.build_screen()
 
     def build_between(lower, between_metrics):
         logic = ""

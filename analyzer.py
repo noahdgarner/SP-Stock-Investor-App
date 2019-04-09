@@ -5,6 +5,19 @@ import json
 import numpy as np
 
 
+class ReportGenerator:
+
+    def __init__(self, profile):
+        self.profile = profile
+
+        print("Creating new report on", self.profile.ticker, "based on...")
+        for i in profile.reasons:
+            print(i.measure, i.value, i.impact)
+
+    # def sentence_builder(self):
+    #     s
+
+
 class Reasons:
 
     def __init__(self, measure, value, impact):
@@ -12,6 +25,12 @@ class Reasons:
         self.value = value
         self.impact = impact
 
+
+class Profile:
+
+    def __init__(self, ticker, reasons):
+        self.ticker = ticker
+        self.reasons = reasons
 
 def analyze_financials():
 
@@ -39,11 +58,19 @@ def defensive_analyzer(items):
 
     company_selection = items.iloc[row].to_dict()
     print(company_selection)
+    ticker = company_selection['ticker']
+    del company_selection['ticker']
 
     list_reasons = []
+
+    # TODO differentiate between positive, negative, neutral
     for key, value in company_selection.items():
         reason = Reasons(key, value, "positive")
         list_reasons.append(reason)
+
+    company_profile = Profile(ticker, list_reasons)
+
+    report = ReportGenerator(company_profile)
 
 def risky_analyzer(items):
 
