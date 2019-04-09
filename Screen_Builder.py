@@ -25,6 +25,7 @@ class screen_builder():
         self.sector = sector_input
         self.excel_sheet = pd.read_excel("Financial Values.xlsx", sheet_name="Sheet1")
         self.api_key = "OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1"
+        self.screen_url = None
 
     def build_between(lower, between_metrics):
         logic = ""
@@ -103,8 +104,7 @@ class screen_builder():
         if order_logic != "":
             screen_logic = screen_logic + order_logic
 
-        screen_request = base + screen_logic  + us_only + page_size + api
-        return screen_request
+        self.screen_url = base + screen_logic  + us_only + page_size + api
 
     def build_screen(self):
 
@@ -112,8 +112,8 @@ class screen_builder():
         self.get_other_metrics()
         self.get_sector_medians()
         self.value_builder()
-        print(self.build_url(self.finance_metrics))
-        #UrlBuilder.build_url(self.finance_metrics)
+        self.build_url(self.finance_metrics)
+
 
     def get_finance_metrics(self):
 
