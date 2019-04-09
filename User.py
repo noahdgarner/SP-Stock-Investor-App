@@ -37,10 +37,9 @@ class User:
         print("run all empty screen")
         for key, screen in self.screens.items():
             if screen.executed == False:
-                print(screen)
                 screen.run_screen()
 
     def get_all_screen_results(self):
         for key, screen in self.screens.items():
-            print(screen)
-            print(screen.json_obj)
+            print(screen.__str__())
+            #rint(screen.result)

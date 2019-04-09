@@ -17,9 +17,10 @@ def build_test_user():
     risky_user.generate_screen_url()
 
     safe_user.run_all_empty_screen()
+    safe_user.get_all_screen_results()
     # risky_user.run_all_empty_screen()
 
-    risky_user.get_all_screen_results()
+    # risky_user.get_all_screen_results()
 
 
 def build_screen_url():
