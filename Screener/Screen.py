@@ -18,6 +18,7 @@ class Screen:
         self.risk_tolerance = None
         self.results = ""
         self.executed = False
+        self.analyzed = False
         self.json_obj = None
 
     def get_url(self, objective, profile, industry):
@@ -42,6 +43,8 @@ class Screen:
             #self.results = pd.DataFrame(json_obj['data'])
             #print(type(self.results))
             # result_frame = pd.DataFrame(test_screen_results.test2)
+
+        self.executed = True
 
     def __str__(self):
 

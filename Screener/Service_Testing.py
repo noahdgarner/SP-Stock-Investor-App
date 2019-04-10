@@ -9,6 +9,8 @@ areas_of_interest = ["Technology", "REITs"]
 
 def build_test_user():
 
+    # builds two tests users, builds and executes screens for each
+    # debug in Screen.run_screen is set to True
     safe_user = User.User()
     safe_user.setup_profile("Defensive", "low", "REITs")
     risky_user = User.User()
@@ -18,9 +20,9 @@ def build_test_user():
 
     safe_user.run_all_empty_screen()
     safe_user.get_all_screen_results()
-    # risky_user.run_all_empty_screen()
+    risky_user.run_all_empty_screen()
 
-    # risky_user.get_all_screen_results()
+    risky_user.get_all_screen_results()
 
 
 def build_screen_url():

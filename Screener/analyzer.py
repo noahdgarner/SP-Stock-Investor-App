@@ -1,5 +1,6 @@
 import pandas as pd
 import test_screen_results
+from Screen import Screen
 import urllib.request
 import json
 import numpy as np
@@ -25,12 +26,17 @@ class Reasons:
         self.value = value
         self.impact = impact
 
-
 class Profile:
 
     def __init__(self, ticker, reasons):
         self.ticker = ticker
         self.reasons = reasons
+
+class Analyzer:
+
+    def __init__(self, screen):
+        print(screen.__str__)
+
 
 def analyze_financials():
 

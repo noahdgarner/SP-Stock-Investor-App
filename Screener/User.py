@@ -1,6 +1,7 @@
 from UserRisk import UserRisk
 from Screen import Screen
 import pandas as pd
+from analyzer import Analyzer
 
 class User:
 
@@ -24,7 +25,6 @@ class User:
         self.investing_knowledge = investing_knowledge
         self.industry_preference = interests
 
-
     def generate_screen_url(self):
 
         for key, value in self.screens.items():
@@ -43,3 +43,4 @@ class User:
         for key, screen in self.screens.items():
             print(screen.__str__())
             #rint(screen.result)
+
