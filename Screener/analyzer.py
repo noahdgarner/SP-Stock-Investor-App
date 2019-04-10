@@ -1,6 +1,6 @@
 import pandas as pd
-import test_screen_results
-from Screen import Screen
+from Screener import test_screen_results
+from Screener.Screen import Screen
 import urllib.request
 import json
 import numpy as np

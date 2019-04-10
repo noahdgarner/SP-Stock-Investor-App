@@ -1,6 +1,6 @@
-from screen_Builder import screen_Builder
+from Screener.screen_Builder import screen_Builder
 import pandas as pd
-import test_screen_results
+import Screener.test_screen_results as tr
 import urllib.request
 import json
 import time
@@ -31,7 +31,7 @@ class Screen:
     def run_screen(self):
         debug = True
         if debug:
-            self.result = test_screen_results.test
+            self.result = tr.test
 
         else:
             time.sleep(5)

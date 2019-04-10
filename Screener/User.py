@@ -1,7 +1,7 @@
-from UserRisk import UserRisk
-from Screen import Screen
+from Screener.UserRisk import UserRisk
+from Screener.Screen import Screen
 import pandas as pd
-from analyzer import Analyzer
+from Screener.analyzer import Analyzer
 
 class User:
 

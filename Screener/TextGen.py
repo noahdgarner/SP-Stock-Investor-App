@@ -1,4 +1,4 @@
-from analyzer import Reasons
+from Screener.analyzer import Reasons
 
 # self.measure = measure
 # self.value = value
