@@ -1,0 +1,15 @@
+.navbar {
+  background-color: skyblue;
+}
+
+body {
+  background-image: url(../data/atmosphere-background-bright-19670.jpg);
+}
+
+.section {
+  background-color: tan;
+  border: 1px solid black;
+  margin: 20px;
+  height: 360px;
+}
+
