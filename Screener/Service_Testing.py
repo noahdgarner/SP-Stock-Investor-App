@@ -50,6 +50,9 @@ def analyzer_tests():
         user_store = json.load(r)
 
     print(user_store)
-    Analyzer.Analyzer(user_store)
+    analyzer = Analyzer.Analyzer(user_store)
+    screen_output = analyzer.screen_results
+    with open('analyzer_output.txt', 'w') as outfile:
+        json.dump(screen_output, outfile)
 
 analyzer_tests()

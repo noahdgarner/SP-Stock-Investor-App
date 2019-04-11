@@ -38,36 +38,31 @@ class Analyzer:
     def __init__(self, user_info):
         debug = True
         testing = True
-
         print("NEW ANALYZER INSTANCE: \n", user_info)
-        profile_info = user_info['UserInfo']
+        self.profile_info = user_info['UserInfo']
         risky_screen = user_info['Risky']
         mod_screen = user_info['Moderate']
         def_screen = user_info['Defensive']
-        screens = [risky_screen, mod_screen, def_screen]
+        self.screens = [risky_screen, mod_screen, def_screen]
 
         # Only runs screen that matches user's profile
-        if debug:
-            for i in screens:
+        if not debug:
+            for i in self.screens:
+                if self.profile_info['risk_profile'] == i['Objective']:
+                    self.screen_results = self.run_screen(i)
 
-                if profile_info['risk_profile'] == i['Objective']:
-                    self.run_screen(i)
+        else:
+            print("Analyzer in Debug")
+            self.screen_results = test_screen_results.defensive_test
 
 
-        # self.risk_profile = user_info['UserInfo']['risk_profile']
-        # self.investing_knowledge = user_info['UserInfo']
-        #print(screen.__str__)
 
     def run_screen(self, screen_info):
         url = screen_info['URL']
         contents = urllib.request.urlopen(url)
         decode = contents.read().decode('utf-8')
         json_obj = json.loads(decode)
-        result_frame = pd.DataFrame(json_obj['data'])
-        print(result_frame)
-
-
-
+        return json_obj
 
 def analyze_financials():
 
