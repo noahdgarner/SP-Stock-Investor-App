@@ -2,6 +2,7 @@ from Screener.UserRisk import UserRisk
 from Screener.Screen import Screen
 import pandas as pd
 from Screener.analyzer import Analyzer
+import json
 
 class User:
 
@@ -19,7 +20,7 @@ class User:
 
     # User.User("Defensive", "low", "high", "REITs")
 
-    def setup_profile(self, risk_profile, investing_knowledge, interests):
+    def setup_profile(self, risk_profile=5, investing_knowledge=0, interests="Tech"):
 
         self.risk_profile = risk_profile
         self.investing_knowledge = investing_knowledge
@@ -42,5 +43,26 @@ class User:
     def get_all_screen_results(self):
         for key, screen in self.screens.items():
             print(screen.__str__())
-            #rint(screen.result)
 
+    def user_to_json(self):
+
+        #         self.risk_profile = None
+        #         self.risk_score = None
+        #         self.investing_knowledge = None
+        #         self.age = None
+        #         self.income = None
+        #         self.financialGoals = None
+        #         self.incomeNeeds = None
+        #         self.industry_preference = None # []
+        #         self.screens = {"Risky": None, "Moderate": None, "Defensive": None}
+
+        user_profile = {'UserInfo':{'risk_profile': self.risk_profile, "risk_score" : self.risk_score, 'investing_knowledge' : self.investing_knowledge, 'industries:': self.industry_preference, 'age': self.age, 'income':self.income, 'financialGoal':self.financialGoals}}
+        screen_dict = {}
+        for key, screen in self.screens.items():
+            screen_dict[key] = screen.to_dict()
+
+        user_profile.update(screen_dict)
+        user_profile = json.dumps(user_profile)
+        user_json = json.loads(user_profile)
+
+        return user_json
