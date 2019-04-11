@@ -5,6 +5,7 @@ import urllib.request
 import json
 import time
 
+
 class Screen:
 
     def __init__(self):
@@ -48,11 +49,10 @@ class Screen:
 
     def to_dict(self):
 
-        d = {'Objective ': self.objective, 'Industry: ': self.industry, 'URL: ': self.url}
+        d = {'Analyzed':self.analyzed,'Objective ': self.objective, 'Industry': self.industry, 'URL ': self.url}
 
         return d
 
     def __str__(self):
 
         return "SCREEN REPORT: \nOBJECTIVE:"+ self.objective+ "\nINDUSTRY:"+ self.industry+ "\nURL:"+self.url+"\nRESULTS:"+str(self.result)
-

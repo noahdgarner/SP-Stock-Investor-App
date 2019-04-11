@@ -30,6 +30,7 @@ def build_test_user():
     with open('user_output.txt', 'w') as outfile:
         json.dump(out_json, outfile)
 
+
 def build_screen_url():
 
     # builds a url using Screen_Builder.py and screen_builder
@@ -38,7 +39,6 @@ def build_screen_url():
     test_screen.build_screen()
     print("Screen")
     print(test_screen.screen_url)
-
 
 
 def run_screen():
