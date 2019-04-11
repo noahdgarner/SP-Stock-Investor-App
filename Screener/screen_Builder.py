@@ -139,7 +139,7 @@ class screen_Builder():
     def value_builder(self):
 
         print("value builder")
-        #TODO
+        # TODO
         # In the future, this function will dynamically allocation numerical values
         # to the financial ratios and metrics chosen in get_finance_metrics()
         # for now, they are assigned statically in get_finance_metrics()

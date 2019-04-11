@@ -43,7 +43,7 @@ def build_screen_url():
 def run_screen():
     test_screen = screen_Builder.screen_Builder("X", "Y", "Defensive")
     test_screen.build_screen()
-    Analyzer.exeucute_url(test_screen.screen_url)
+    #Analyzer.execute(test_screen.screen_url)
 
 def analyzer_tests():
     with open('user_output.txt', 'r') as r:
@@ -54,5 +54,8 @@ def analyzer_tests():
     screen_output = analyzer.screen_results
     with open('analyzer_output.txt', 'w') as outfile:
         json.dump(screen_output, outfile)
+
+    # building analysis
+    analyzer.analysis()
 
 analyzer_tests()

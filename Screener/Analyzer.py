@@ -32,14 +32,20 @@ class Profile:
         self.ticker = ticker
         self.reasons = reasons
 
+    def __str__(self):
+
+        return self.ticker
 
 class Analyzer:
 
     def __init__(self, user_info):
+        # TODO Analyze one screen at a time, so only pass in user profile and one screen. Current setup
+        #  will only run the screen that matches the user profile. Ex: UserProfile.Defensive == Screen.Defensive
         debug = True
         testing = True
         print("NEW ANALYZER INSTANCE: \n", user_info)
         self.profile_info = user_info['UserInfo']
+        self.objective = self.profile_info['risk_profile']
         risky_screen = user_info['Risky']
         mod_screen = user_info['Moderate']
         def_screen = user_info['Defensive']
@@ -55,14 +61,70 @@ class Analyzer:
             print("Analyzer in Debug")
             self.screen_results = test_screen_results.defensive_test
 
-
-
     def run_screen(self, screen_info):
         url = screen_info['URL']
         contents = urllib.request.urlopen(url)
         decode = contents.read().decode('utf-8')
         json_obj = json.loads(decode)
-        return json_obj
+        return json_obj['data']
+
+    def defensive_analyzer(self):
+
+        # TODO
+        # sort by each criteria, get median company from each and build scoring system of those 3-10 companies
+        companies = self.companies
+
+        companies.sort_values(by=['debttoequity'], ascending=True)
+        row = int(len(companies.index) / 2)
+
+        company_selection = companies.iloc[row].to_dict()
+        print(company_selection)
+        ticker = company_selection['ticker']
+        del company_selection['ticker']
+
+        list_reasons = []
+
+        # TODO differentiate between positive, negative, neutral
+        for key, value in company_selection.items():
+            reason = Reasons(key, value, "positive")
+            list_reasons.append(reason)
+
+        company_profile = Profile(ticker, list_reasons)
+        print("Defensive Choice:", company_profile.__str__())
+
+    def risky_analyzer(self):
+
+        companies = self.companies
+
+        companies.sort_values(by=['revenuegrowth'], ascending=False)
+        row = int(len(companies.index) / 2)
+
+        company_selection = companies.iloc[row].to_dict()
+        print(company_selection)
+        ticker = company_selection['ticker']
+        del company_selection['ticker']
+
+        list_reasons = []
+
+        # TODO differentiate between positive, negative, neutral
+        for key, value in company_selection.items():
+            reason = Reasons(key, value, "positive")
+            list_reasons.append(reason)
+
+        company_profile = Profile(ticker, list_reasons)
+        print("Risky Choice:", company_profile.__str__())
+
+
+    def analysis(self):
+
+        companies = pd.DataFrame(self.screen_results)
+        primary_only = companies['ticker'].str.len() < 5
+        self.companies = companies[primary_only]
+
+        if self.objective == "Defensive":
+            self.defensive_analyzer()
+        elif self.objective == "Risky":
+            self.risky_analyzer()
 
 def analyze_financials():
 
