@@ -32,10 +32,41 @@ class Profile:
         self.ticker = ticker
         self.reasons = reasons
 
+
 class Analyzer:
 
-    def __init__(self, screen):
-        print(screen.__str__)
+    def __init__(self, user_info):
+        debug = True
+        testing = True
+
+        print("NEW ANALYZER INSTANCE: \n", user_info)
+        profile_info = user_info['UserInfo']
+        risky_screen = user_info['Risky']
+        mod_screen = user_info['Moderate']
+        def_screen = user_info['Defensive']
+        screens = [risky_screen, mod_screen, def_screen]
+
+        # Only runs screen that matches user's profile
+        if debug:
+            for i in screens:
+
+                if profile_info['risk_profile'] == i['Objective']:
+                    self.run_screen(i)
+
+
+        # self.risk_profile = user_info['UserInfo']['risk_profile']
+        # self.investing_knowledge = user_info['UserInfo']
+        #print(screen.__str__)
+
+    def run_screen(self, screen_info):
+        url = screen_info['URL']
+        contents = urllib.request.urlopen(url)
+        decode = contents.read().decode('utf-8')
+        json_obj = json.loads(decode)
+        result_frame = pd.DataFrame(json_obj['data'])
+        print(result_frame)
+
+
 
 
 def analyze_financials():
@@ -81,15 +112,3 @@ def defensive_analyzer(items):
 def risky_analyzer(items):
 
     print("risk analyzer")
-
-def exeucute_url(url):
-    print("REAL URL: " + url + "  Getting dict fro test_screen_results")
-
-    # contents = urllib.request.urlopen(url)
-    # decode = contents.read().decode('utf-8')
-    # json_obj = json.loads(decode)
-    # result_frame = pd.DataFrame(json_obj['data'])
-
-    result_frame = pd.DataFrame(test_screen_results.test2)
-
-    defensive_analyzer(result_frame)

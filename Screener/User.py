@@ -1,7 +1,7 @@
 from Screener.UserRisk import UserRisk
 from Screener.Screen import Screen
 import pandas as pd
-from Screener.analyzer import Analyzer
+from Screener.Analyzer import Analyzer
 import json
 
 class User:

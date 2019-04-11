@@ -35,7 +35,7 @@ class Screen:
             self.result = tr.test
 
         else:
-            time.sleep(5)
+            time.sleep(3)
             print('running screen', self.url)
             contents = urllib.request.urlopen(self.url)
             decode = contents.read().decode('utf-8')
@@ -49,7 +49,7 @@ class Screen:
 
     def to_dict(self):
 
-        d = {'Analyzed':self.analyzed,'Objective ': self.objective, 'Industry': self.industry, 'URL ': self.url}
+        d = {'Analyzed':self.analyzed,'Objective': self.objective, 'Industry': self.industry, 'URL': self.url}
 
         return d
 
