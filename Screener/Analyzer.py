@@ -1,10 +1,15 @@
 import pandas as pd
-from Screener import test_screen_results
+from Screener import test_screen_results, close_px_results, GraphBuilder
 from Screener.Screen import Screen
 import urllib.request
 import json
-import numpy as np
+import intrinio_sdk
+import time
+import datetime
+from intrinio_sdk.rest import ApiException
 
+
+import numpy as np
 
 class ReportGenerator:
 
@@ -50,6 +55,9 @@ class Analyzer:
         mod_screen = user_info['Moderate']
         def_screen = user_info['Defensive']
         self.screens = [risky_screen, mod_screen, def_screen]
+        self.companies = None
+        self.company_profile = None
+
 
         # Only runs screen that matches user's profile
         if not debug:
@@ -89,8 +97,9 @@ class Analyzer:
             reason = Reasons(key, value, "positive")
             list_reasons.append(reason)
 
-        company_profile = Profile(ticker, list_reasons)
-        print("Defensive Choice:", company_profile.__str__())
+        self.company_profile = Profile(ticker, list_reasons)
+        print("Defensive Choice:", self.company_profile.__str__())
+
 
     def risky_analyzer(self):
 
@@ -111,9 +120,44 @@ class Analyzer:
             reason = Reasons(key, value, "positive")
             list_reasons.append(reason)
 
-        company_profile = Profile(ticker, list_reasons)
-        print("Risky Choice:", company_profile.__str__())
+        self.company_profile = Profile(ticker, list_reasons)
+        print("Risky Choice:", self.company_profile.__str__())
 
+
+    def graph_price(self):
+
+        debug = True
+
+        print("Generating 1Y Price chart for ", self.company_profile.ticker)
+        intrinio_sdk.ApiClient().configuration.api_key['api_key'] = 'OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi'
+        security_api = intrinio_sdk.SecurityApi()
+
+        identifier = self.company_profile.ticker
+        now = datetime.datetime.now()
+        end_date = now.date()
+        start_date = (now - datetime.timedelta(days=365)).date()
+
+        logic = "https://api-v2.intrinio.com/securities/"+identifier+"/prices?start_date=" + str(start_date) + "&end_date=" + str(end_date) + "&frequency=daily&page_size=365"
+        url = logic + "&api_key=OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi"
+
+        "https://api-v2.intrinio.com/securities/JNJ/prices?start_date=2018-04-11&end_date=2019-04-11&frequency=daily&page_size=365&api_key=OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi"
+
+        if debug:
+            print("Graph builder debug on")
+            close_prices = pd.DataFrame(close_px_results.test_close_px)
+        else:
+            contents = urllib.request.urlopen(url)
+            decode = contents.read().decode('utf-8')
+            dict_obj = json.loads(decode)['stock_prices']
+            close_prices = pd.DataFrame(dict_obj)
+
+
+        print(close_prices['date'])
+
+        close_prices.sort_values(by=['date'], inplace=True, ascending=True)
+        print(close_prices['date'])
+
+        GraphBuilder.build_graph(self.company_profile, close_prices)
 
     def analysis(self):
 
@@ -126,46 +170,4 @@ class Analyzer:
         elif self.objective == "Risky":
             self.risky_analyzer()
 
-def analyze_financials():
-
-    print("analyzing financials")
-
-    # some testing values
-    frame = pd.DataFrame(test_screen_results.test2)
-
-    #gets the median company returned from screen
-    row = int(len(frame.index) / 2)
-
-    item = 'debttoequity'
-
-    the_dict = frame.iloc[row].to_dict()
-
-    print(the_dict[item])
-
-def defensive_analyzer(items):
-
-    # TODO
-    # sort by each criteria, get median company from each and build scoring system of those 3-10 companies
-
-    items.sort_values(by=['debttoequity'], ascending=True)
-    row = int(len(items.index) / 2)
-
-    company_selection = items.iloc[row].to_dict()
-    print(company_selection)
-    ticker = company_selection['ticker']
-    del company_selection['ticker']
-
-    list_reasons = []
-
-    # TODO differentiate between positive, negative, neutral
-    for key, value in company_selection.items():
-        reason = Reasons(key, value, "positive")
-        list_reasons.append(reason)
-
-    company_profile = Profile(ticker, list_reasons)
-
-    report = ReportGenerator(company_profile)
-
-def risky_analyzer(items):
-
-    print("risk analyzer")
+        self.graph_price()
