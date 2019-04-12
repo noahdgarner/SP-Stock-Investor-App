@@ -9,18 +9,14 @@ from datetime import datetime
 def build_graph(profile, df):
 
     ticker = profile.ticker
-    print(ticker)
-    print(df['date'])
-    df.sort_values(by=['date'], ascending=False)
-    print(df['date'])
 
-    #
-    # plt.style.use('seaborn-darkgrid')
-    #
-    # ax = plt.gca()
-    # df.plot(kind='line', x='date', y='adj_close', ax=ax)
-    #
-    # plt.show()
+
+    plt.style.use('seaborn-darkgrid')
+
+    ax = plt.gca()
+    df.plot(kind='line', x='date', y='adj_close', ax=ax)
+
+    plt.show()
 
 
 

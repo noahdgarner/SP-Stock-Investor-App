@@ -151,11 +151,7 @@ class Analyzer:
             dict_obj = json.loads(decode)['stock_prices']
             close_prices = pd.DataFrame(dict_obj)
 
-
-        print(close_prices['date'])
-
         close_prices.sort_values(by=['date'], inplace=True, ascending=True)
-        print(close_prices['date'])
 
         GraphBuilder.build_graph(self.company_profile, close_prices)
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c93a9ea-ad40-44f6-bf43-e3fb516364c1" name="Default" comment="User JSON testing output to textfile">
+    <list default="true" id="3c93a9ea-ad40-44f6-bf43-e3fb516364c1" name="Default" comment="Company selection structure is implemented in Analyzer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Screener/Analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Screener/Analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Screener/test_screen_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/Screener/test_screen_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screener/GraphBuilder.py" beforeDir="false" afterPath="$PROJECT_DIR$/Screener/GraphBuilder.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Screener/Service_Testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="54" column="16" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="16" />
+            <state relative-caret-position="282">
+              <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -29,11 +29,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Screener/Analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="146">
+              <caret line="152" selection-start-line="152" selection-end-line="152" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Screener/GraphBuilder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Screener/screen_Builder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1882">
+              <caret line="120" column="32" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="32" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -42,10 +63,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Screener/test_screen_results.py">
+        <entry file="file://$PROJECT_DIR$/Screener/user_output.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="128" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="15972" />
+            <state>
+              <caret column="417" selection-start-column="417" selection-end-column="417" />
             </state>
           </provider>
         </entry>
@@ -64,12 +85,16 @@
       <find>earnings</find>
       <find>ratio</find>
       <find>value builder</find>
-      <find>order</find>
       <find>print</find>
       <find>list</find>
       <find>analyzed</find>
       <find>Analyzed</find>
       <find>'</find>
+      <find>objective</find>
+      <find>primary</find>
+      <find>excel_sheet</find>
+      <find>dataframe</find>
+      <find>order</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -103,7 +128,10 @@
         <option value="$PROJECT_DIR$/Screener/Screen.py" />
         <option value="$PROJECT_DIR$/Screener/Service_Testing.py" />
         <option value="$PROJECT_DIR$/Screener/test_screen_results.py" />
+        <option value="$PROJECT_DIR$/Screener/screen_Builder.py" />
+        <option value="$PROJECT_DIR$/Screener/close_px_results.py" />
         <option value="$PROJECT_DIR$/Screener/Analyzer.py" />
+        <option value="$PROJECT_DIR$/Screener/GraphBuilder.py" />
       </list>
     </option>
   </component>
@@ -179,7 +207,7 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration name="DataPointReceiver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="GraphBuilder" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Stock" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -187,11 +215,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Screener" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataPointReceiver.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Screener/GraphBuilder.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -306,15 +334,16 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.DataPointReceiver" />
       <item itemvalue="Python.Pull-Financials" />
       <item itemvalue="Python.Service_Testing" />
       <item itemvalue="Python.analyzer" />
       <item itemvalue="Python.output_testing" />
+      <item itemvalue="Python.GraphBuilder" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Service_Testing" />
+        <item itemvalue="Python.GraphBuilder" />
       </list>
     </recent_temporary>
   </component>
@@ -434,7 +463,28 @@
       <option name="project" value="LOCAL" />
       <updated>1555022632154</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Screen results from Analyzer output for text file for testing">
+      <created>1555023318365</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1555023318365</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Company selection structure is implemented in Analyzer">
+      <created>1555025419920</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1555025419920</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Graph builder created. dates are ordered correctly">
+      <created>1555035961028</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1555035961028</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -494,7 +544,10 @@
     <MESSAGE value="Moved and deleted some files in Screener" />
     <MESSAGE value="User JSON testing output to textfile" />
     <MESSAGE value="Screen is run in Analyzer.run_screen()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Screen is run in Analyzer.run_screen()" />
+    <MESSAGE value="Screen results from Analyzer output for text file for testing" />
+    <MESSAGE value="Company selection structure is implemented in Analyzer" />
+    <MESSAGE value="Graph builder created. dates are ordered correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Graph builder created. dates are ordered correctly" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DataPointReceiver.py" />
@@ -510,13 +563,6 @@
     <entry file="file://$PROJECT_DIR$/UrlBuilder.py" />
     <entry file="file://$PROJECT_DIR$/EquityScreen.py" />
     <entry file="file://$PROJECT_DIR$/output_testing.py" />
-    <entry file="file://$PROJECT_DIR$/Screener/url_testing">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pull-Financials.py" />
     <entry file="file://$PROJECT_DIR$/TextGen.py" />
     <entry file="file://$PROJECT_DIR$/screen_Builder.py" />
@@ -536,16 +582,6 @@
     <entry file="file://$PROJECT_DIR$/Screener/EquityScreen.py" />
     <entry file="file://$PROJECT_DIR$/Screener/Pull-Financials.py" />
     <entry file="file://$PROJECT_DIR$/Screener/UrlBuilder.py" />
-    <entry file="file://$PROJECT_DIR$/Screener/screen_Builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1283">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Screener/report_generator.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -556,27 +592,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Screener/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="22" column="85" lean-forward="true" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Screener/UserRisk.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Screener/user_output.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="417" selection-start-column="417" selection-end-column="417" />
         </state>
       </provider>
     </entry>
@@ -587,30 +606,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/analyzer_output.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="28" column="34" lean-forward="true" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Screener/test_screen_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="128" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="15972" />
+          <caret line="3" column="67" selection-start-line="3" selection-start-column="67" selection-end-line="3" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/close_px_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Screener/Service_Testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="54" column="16" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="16" />
+        <state relative-caret-position="282">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Screener/Analyzer.py">
+    <entry file="file://$PROJECT_DIR$/Screener/user_output.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state>
+          <caret column="417" selection-start-column="417" selection-end-column="417" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/screen_Builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1882">
+          <caret line="120" column="32" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="32" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/url_testing">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="191" selection-start-line="18" selection-start-column="190" selection-end-line="18" selection-end-column="191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/Analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Screener/GraphBuilder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
         </state>
       </provider>
     </entry>
