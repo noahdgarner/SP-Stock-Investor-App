@@ -1,5 +1,5 @@
 import pandas as pd
-from Screener import test_screen_results, close_px_results, GraphBuilder
+from Screener import test_screen_results, close_px_results, GraphBuilder, data_point_results
 from Screener.Screen import Screen
 import urllib.request
 import json
@@ -10,6 +10,9 @@ from intrinio_sdk.rest import ApiException
 
 
 import numpy as np
+
+debug = True
+
 
 class ReportGenerator:
 
@@ -46,7 +49,6 @@ class Analyzer:
     def __init__(self, user_info):
         # TODO Analyze one screen at a time, so only pass in user profile and one screen. Current setup
         #  will only run the screen that matches the user profile. Ex: UserProfile.Defensive == Screen.Defensive
-        debug = True
         testing = True
         print("NEW ANALYZER INSTANCE: \n", user_info)
         self.profile_info = user_info['UserInfo']
@@ -126,12 +128,6 @@ class Analyzer:
 
     def graph_price(self):
 
-        debug = True
-
-        print("Generating 1Y Price chart for ", self.company_profile.ticker)
-        intrinio_sdk.ApiClient().configuration.api_key['api_key'] = 'OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi'
-        security_api = intrinio_sdk.SecurityApi()
-
         identifier = self.company_profile.ticker
         now = datetime.datetime.now()
         end_date = now.date()
@@ -139,8 +135,6 @@ class Analyzer:
 
         logic = "https://api-v2.intrinio.com/securities/"+identifier+"/prices?start_date=" + str(start_date) + "&end_date=" + str(end_date) + "&frequency=daily&page_size=365"
         url = logic + "&api_key=OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi"
-
-        "https://api-v2.intrinio.com/securities/JNJ/prices?start_date=2018-04-11&end_date=2019-04-11&frequency=daily&page_size=365&api_key=OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi"
 
         if debug:
             print("Graph builder debug on")
@@ -155,6 +149,29 @@ class Analyzer:
 
         GraphBuilder.build_graph(self.company_profile, close_prices)
 
+    def get_standard_fundamentals(self):
+
+        tags = ['revenuegrowth', 'profitmargin', 'pricetoearnings', 'pricetobook', 'industry_category', 'industry_group', 'basiceps', 'short_description']
+
+        identifier = self.company_profile.ticker
+        basic = "https://api.intrinio.com/data_point?identifier=" + identifier + "&item="
+        logic = ""
+        for i in tags:
+            logic = logic + i +','
+
+        logic = logic.strip(',')
+        url = basic + logic + "&api_key=OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi"
+
+        if debug:
+            dict_obj = data_point_results.dpr
+        else:
+            contents = urllib.request.urlopen(url)
+            decode = contents.read().decode('utf-8')
+            dict_obj = json.loads(decode)['data']
+
+        print(dict_obj)
+        #close_prices = pd.DataFrame(dict_obj)
+
     def analysis(self):
 
         companies = pd.DataFrame(self.screen_results)
@@ -166,4 +183,5 @@ class Analyzer:
         elif self.objective == "Risky":
             self.risky_analyzer()
 
-        self.graph_price()
+        #self.graph_price()
+        self.get_standard_fundamentals()
