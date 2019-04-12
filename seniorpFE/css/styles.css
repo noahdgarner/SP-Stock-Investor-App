@@ -1,0 +1,24 @@
+.navbar {
+  background-color: skyblue;
+}
+
+#warn {
+  text-align: left;
+}
+
+body {
+  background: url(../images/animal-dawn-desktop-backgrounds-875858.jpg) no-repeat fixed center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.section {
+  background-color: tan;
+  border: 1px solid black;
+  margin: 20px;
+  height: 400px;
+
+}
+
