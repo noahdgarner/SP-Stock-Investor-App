@@ -169,6 +169,8 @@ class Analyzer:
             decode = contents.read().decode('utf-8')
             dict_obj = json.loads(decode)['data']
 
+        #todo parse results
+
         print(dict_obj)
         #close_prices = pd.DataFrame(dict_obj)
 
