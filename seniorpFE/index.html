@@ -10,11 +10,12 @@
 </head>
 
 <body>
+<!--Header Is Static. Everything else is dynamic. -->
 <header>
     <!--TODO: Implement Navbar Utils -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-grey">
-        <a class="navbar-brand" href="#">Get Rich Quick (Beta)</a>
+        <a class="navbar-brand" href="https://github.com/atjessehill/Financial-Advisor-Senior-Project" target="_blank">Get Rich Quick (Beta) TODO: Log-In DD</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,7 +28,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="https://codedotcom.com/" target="_blank">Link</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,23 +41,27 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-
             </ul>
-
-        </div>
-    </nav>
-
-</header>
+        </div>  <!--End collapsable Nav -->
+    </nav> <!--End NavBar -->
+</header> <!-- Header Done -->
 
 <!--Note, we need to put responsive items inside the container class -->
-<div id="main-content" class="container"></div> <!--End container. -->
+<div id="main-content" class="container">
+    <h2 id="test" class="text-center">Stock Analyzer</h2>
+    <div class="row">
+        <div id="injectHere"></div>
+        <div id="andHere"></div>
+    </div> <!--End Row -->
+</div> <!--End container. -->
 
-    <!--Most up to date scripts for navbar. This sucked ass to research -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-    <script src="js/ajax-utils.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/objects.js"></script>
+<!--Most up to date scripts for navbar. This sucked ass to research -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!--Personal Scripts-->
+<script src="js/ajax-utils.js"></script>
+<script src="js/script.js"></script>
+<script src="js/objects.js"></script>
+<script src="js/autocomplete.js"></script>
 </body>
 </html>

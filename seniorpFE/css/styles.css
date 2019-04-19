@@ -1,11 +1,9 @@
 .navbar {
   background-color: skyblue;
 }
-
 #warn {
   text-align: left;
 }
-
 body {
   background: url(../images/animal-dawn-desktop-backgrounds-875858.jpg) no-repeat fixed center center;
   -webkit-background-size: cover;
@@ -13,12 +11,107 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-
 .section {
+  box-sizing: border-box;
   background-color: tan;
+  border-radius: 10px;
   border: 1px solid black;
   margin: 20px;
-  height: 400px;
+  height: 100%;
+}
+/*Needed to do this so our AJAX Section 2 would stretch across screen
+ Not exactly sure why... just debugged it and it worked.*/
+.row {
+  display: block;
+}
+/*Control the form box. Adjust the border later */
+form {
+  border: cornflowerblue solid 2px;
+  border-radius: 10px;
+  /*keeps the form centered in the section */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  /*keeps border even within section at small device */
+  width: 80%;
+  max-width: 400px;
 
 }
+
+/*Fixes the equality of length of the text boxes. */
+textarea, input, fieldset > button, p > button {
+  width: 70%;
+  border-radius: 10px;
+  /*full control over width of these texxt areas */
+  max-width: 200px;
+  margin: 2px;
+}
+button:hover {
+  background-color: white;
+}
+/*Doing direct child because we don't want to highlight 'back to top' links */
+nav > a:hover, li > a:hover{
+  background-color: lightcyan;
+  border-radius: 5px;
+}
+
+
+/*So that <p> has more space between margins in section 2 */
+p {
+  margin: 10px;
+}
+
+
+/*Specific to auto complete, this is prototype
+These will all effect the way that options are displayed to user
+toy with this tomorrow*/
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items div {
+  border-radius: 5px;
+  width: 65%;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+
+
+/*Control the location of form fields. */
+@media (min-width: 768px) {
+  fieldset {
+    text-align: center;
+  }
+  .autocomplete {
+    text-align: center;
+  }
+  .autocomplete-items div {
+    text-align: center;
+  }
+
+}
+@media (max-width: 768px) {
+  fieldset {
+    text-align: left;
+  }
+  .autocomplete {
+    text-align: left;
+  }
+
+  .autocomplete-items div {
+    text-align: left;
+  }
+
+}
+
+
+
 

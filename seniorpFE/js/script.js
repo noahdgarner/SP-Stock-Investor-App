@@ -1,10 +1,7 @@
-//replaced DOMContentLoaded, so this will load immediately after HTML
-$(function () {
-
-    $(".navbar-toggler").blur(function () {
-            $("#navbarSupportedContent").collapse('hide');
-    });
-
+//dude this does NOT need to be in an IIFE, because script is placed
+//at bottom of the HTML doc...
+$(".navbar-toggler").blur(function () {
+    $("#navbarSupportedContent").collapse('hide');
 });
 
 
@@ -14,7 +11,8 @@ $(function () {
 
     let obj = {};
     //the object we will expose
-    let contentHTML = "aSyncHTML/mainContents.html";
+    let header1HTML = "aSyncHTML/header1.html";
+    let header2HTML = "aSyncHTML/header2.html";
     //convenience method to insert HTML at a given selector, nice
     // Convenience function for inserting innerHTML for 'select'
     let insertHtml = function (selector, html) {
@@ -29,44 +27,53 @@ $(function () {
         insertHtml(selector, html);
     };
     //working
-    document.addEventListener("DOMContentLoaded", function (event) {
+    $(function (event) {
         //show user a loading icon while they wait for page load
-        showLoading("#main-content");
+        showLoading("#andHere");
         //we can use this object because its global in util.js!!
         //issues our AJAX request'
-        $ajaxUtils.sendGetRequest(contentHTML, function (responseText) {
-            document.querySelector("#main-content")
+
+        $ajaxUtils.sendGetRequest(header1HTML, function (responseText) {
+            document.querySelector("#injectHere")
                 .innerHTML = responseText;
         }, false);
+
+        //asyn injects header 2.
+        $ajaxUtils.sendGetRequest(header2HTML, function (responseText) {
+            document.querySelector("#andHere")
+                .innerHTML = responseText;
+        }, false);
+
     });
 
 
-     obj.loadJSONText = function () {
-                // Call server to get the data
-                $ajaxUtils
-                    .sendGetRequest("data/info.json",
-                        function (res) {
-                            let message =
-                                res.firstName + " " + res.lastName
-                            if (res.likesProgramming) {
-                                message += " likes programming";
-                            } else {
-                                message += " doesn't like Chinese food";
-                            }
-                            message += " and uses ";
-                            message += res.numCoffees + 1;
-                            message += " coffees for productivity.";
-                            message += " this was an asynchronous call" +
-                                "to info.json. Good job."
+    obj.loadJSONText = function () {
+        // Call server to get the data
+        $ajaxUtils
+            .sendGetRequest("data/info.json",
+                function (res) {
+                    let message =
+                        res.firstName + " " + res.lastName
+                    if (res.likesProgramming) {
+                        message += " likes programming";
+                    } else {
+                        message += " doesn't like Chinese food";
+                    }
+                    message += " and uses ";
+                    message += res.numCoffees + 1;
+                    message += " coffees for productivity.";
+                    message += " this was an asynchronous call" +
+                        "to info.json. Good job."
 
-                            document.querySelector("#buttonReaction")
-                                .innerHTML = "<h2>"+message+"</h2>";
-                        }, true);
-            };
+                    document.querySelector("#jsonData")
+                        .innerHTML = "<h2>"+message+"</h2>";
+                }, true);
+    };
 
 
     global.$obj = obj;
 
 })(window);
+
 
 
