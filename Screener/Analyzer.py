@@ -57,6 +57,7 @@ class Analyzer:
         mod_screen = user_info['Moderate']
         def_screen = user_info['Defensive']
         self.screens = [risky_screen, mod_screen, def_screen]
+        self.fundamental_values = []
         self.companies = None
         self.company_profile = None
 
@@ -169,10 +170,19 @@ class Analyzer:
             decode = contents.read().decode('utf-8')
             dict_obj = json.loads(decode)['data']
 
+        # self.fundamental_values = dict_obj
+
         #todo parse results
 
-        print(dict_obj)
-        #close_prices = pd.DataFrame(dict_obj)
+        keyvals = {}
+
+        for item in tags:
+            for d in dict_obj:
+                if d['item'] == item:
+                    keyvals[item] = d['value']
+
+        self.fundamental_values = keyvals
+
 
     def analysis(self):
 
@@ -187,3 +197,4 @@ class Analyzer:
 
         #self.graph_price()
         self.get_standard_fundamentals()
+        self.build_report()
