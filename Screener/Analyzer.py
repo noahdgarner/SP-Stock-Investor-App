@@ -1,15 +1,9 @@
 import pandas as pd
 from Screener import test_screen_results, close_px_results, GraphBuilder, data_point_results
-from Screener.Screen import Screen
 import urllib.request
 import json
-import intrinio_sdk
-import time
 import datetime
-from intrinio_sdk.rest import ApiException
 
-
-import numpy as np
 
 debug = True
 
@@ -62,6 +56,7 @@ class Analyzer:
         self.company_profile = None
         self.excel_sheet = pd.read_excel("Fundamental_Info.xlsx", sheet_name="Sheet1")
         self.tags = []
+        self.finance_reasons = []
 
 
         # Only runs screen that matches user's profile
@@ -185,12 +180,9 @@ class Analyzer:
         self.tags = tags
         self.fundamental_values = keyvals
 
-
     def report_text(self):
 
-
-        self.english_df = self.excel_sheet[self.excel_sheet['Intrinio'].isin(self.tags)]
-
+        english_df = self.excel_sheet[self.excel_sheet['Intrinio'].isin(self.tags)]
 
         list_reasons = []
         #
@@ -201,23 +193,18 @@ class Analyzer:
 
         knowledge = "Basic"
 
-        # # test = self.english_df.loc[knowledge]
-        # print(self.english_df.Basic)
+        name = english_df["Name"].tolist()
+        english = english_df[knowledge].tolist()
+        intrinio = english_df["Intrinio"].tolist()
 
-        english_text = dict(zip(self.english_df.Intrinio, self.english_df.Basic))
+        list_reasons = []
 
-        print(english_text)
-        print(self.fundamental_values)
+        for i in range (0, len(intrinio)):
+            if intrinio[i] in self.fundamental_values:
+                reason = Reasons(name[i], self.fundamental_values[intrinio[i]], english[i])
+                list_reasons.append(reason)
 
-        for i in english_text:
-            for j in self.fundamental_values:
-                print(english_text[i])
-        #         if i.key == j.key:
-        #             print("NEW REASON: ", i.key, j.value, i.value)
-        # #             # reason = Reasons(i,)
-
-
-
+        self.finance_reasons = list_reasons
 
     def analysis(self):
 
