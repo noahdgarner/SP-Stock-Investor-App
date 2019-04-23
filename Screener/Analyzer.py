@@ -29,10 +29,10 @@ class ReportGenerator:
 
 class Reasons:
 
-    def __init__(self, measure, value, impact):
+    def __init__(self, measure, value, language):
         self.measure = measure
         self.value = value
-        self.impact = impact
+        self.language = language
 
 class Profile:
 
@@ -60,6 +60,8 @@ class Analyzer:
         self.fundamental_values = []
         self.companies = None
         self.company_profile = None
+        self.excel_sheet = pd.read_excel("Fundamental_Info.xlsx", sheet_name="Sheet1")
+        self.tags = []
 
 
         # Only runs screen that matches user's profile
@@ -170,8 +172,6 @@ class Analyzer:
             decode = contents.read().decode('utf-8')
             dict_obj = json.loads(decode)['data']
 
-        # self.fundamental_values = dict_obj
-
         #todo parse results
 
         keyvals = {}
@@ -181,7 +181,42 @@ class Analyzer:
                 if d['item'] == item:
                     keyvals[item] = d['value']
 
+
+        self.tags = tags
         self.fundamental_values = keyvals
+
+
+    def report_text(self):
+
+
+        self.english_df = self.excel_sheet[self.excel_sheet['Intrinio'].isin(self.tags)]
+
+
+        list_reasons = []
+        #
+        # # TODO differentiate between positive, negative, neutral
+        # for key, value in company_selection.items():
+        #     reason = Reasons(key, value, "positive")
+        #     list_reasons.append(reason)
+
+        knowledge = "Basic"
+
+        # # test = self.english_df.loc[knowledge]
+        # print(self.english_df.Basic)
+
+        english_text = dict(zip(self.english_df.Intrinio, self.english_df.Basic))
+
+        print(english_text)
+        print(self.fundamental_values)
+
+        for i in english_text:
+            for j in self.fundamental_values:
+                print(english_text[i])
+        #         if i.key == j.key:
+        #             print("NEW REASON: ", i.key, j.value, i.value)
+        # #             # reason = Reasons(i,)
+
+
 
 
     def analysis(self):
@@ -197,4 +232,4 @@ class Analyzer:
 
         #self.graph_price()
         self.get_standard_fundamentals()
-        self.build_report()
+        self.report_text()
