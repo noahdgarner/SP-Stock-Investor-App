@@ -1,5 +1,7 @@
 from Screener import User, screen_Builder, Screen, Analyzer, report_generator
 import json
+from EmailClient import client
+
 
 risk_profiles = ["Risky", "Moderate", "Defensive"]
 
@@ -65,5 +67,8 @@ def analyzer_tests():
     print(analyzer.img_path)
     generate = report_generator.reportGenerator(safe_user, analyzer.finance_reasons)
     generate.generate_report()
+
+    client.integrated_test(generate.report_path)
+
 
 analyzer_tests()

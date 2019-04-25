@@ -1,5 +1,6 @@
 from Screener.Analyzer import Analyzer, Reasons
 from Screener.User import User
+from os import path
 
 class reportGenerator:
 
@@ -10,6 +11,7 @@ class reportGenerator:
 
         #TODO function that generates path
         self.img_path = "images/graph.png"
+        self.report_path = None
 
     # class Reasons:
     #
@@ -43,7 +45,23 @@ class reportGenerator:
 
             en_reasons.append(item)
 
-
         px_chart = "We also pulled their price movement over the last year which we think you'll find interesting"
 
         closing = "Always be sure to invest wisely!"
+
+        basepath = path.dirname(__file__)
+        filepath = path.abspath(path.join(basepath,"..","EmailClient", "report_test.txt"))
+        file = open(filepath, "w")
+        # print(filepath)
+
+        file.write(salutation)
+        file.write(intro)
+
+        for i in en_reasons:
+            file.write(i)
+
+        file.write(px_chart)
+        file.write(self.img_path)
+        file.write(closing)
+
+        self.report_path = filepath
