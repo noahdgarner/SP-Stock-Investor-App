@@ -17,4 +17,10 @@ def build_graph(profile, df):
     ax = plt.gca()
     df.plot(kind='line', x='date', y='adj_close', ax=ax)
 
-    plt.savefig('images/graph.png')
+
+
+    path = 'images/graph.png'
+
+    plt.savefig(path)
+
+    return path

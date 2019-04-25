@@ -1,4 +1,4 @@
-from Screener import User, screen_Builder, Screen, Analyzer
+from Screener import User, screen_Builder, Screen, Analyzer, report_generator
 import json
 
 risk_profiles = ["Risky", "Moderate", "Defensive"]
@@ -57,5 +57,13 @@ def analyzer_tests():
 
     # building analysis
     analyzer.analysis()
+
+    safe_user = User.User()
+    safe_user.setup_profile("Defensive", 5, "REITs")
+
+    print(analyzer.finance_reasons[0].language)
+    print(analyzer.img_path)
+    generate = report_generator.reportGenerator(safe_user, analyzer.finance_reasons)
+    generate.generate_report()
 
 analyzer_tests()

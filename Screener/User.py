@@ -8,6 +8,8 @@ class User:
 
     def __init__(self):
         # self.risk = UserRisk.riskScore
+        self.firstName = "Jesse"
+        self.fullName = "Jesse Test"
         self.risk_profile = None
         self.risk_score = None
         self.investing_knowledge = None
@@ -17,6 +19,7 @@ class User:
         self.incomeNeeds = None
         self.industry_preference = None # []
         self.screens = {"Risky": None, "Moderate": None, "Defensive": None}
+
 
     # User.User("Defensive", "low", "high", "REITs")
 

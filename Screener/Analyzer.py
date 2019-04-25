@@ -17,10 +17,6 @@ class ReportGenerator:
         for i in profile.reasons:
             print(i.measure, i.value, i.impact)
 
-    # def sentence_builder(self):
-    #     s
-
-
 class Reasons:
 
     def __init__(self, measure, value, language):
@@ -57,6 +53,7 @@ class Analyzer:
         self.excel_sheet = pd.read_excel("Fundamental_Info.xlsx", sheet_name="Sheet1")
         self.tags = []
         self.finance_reasons = []
+        self.img_path = None
 
 
         # Only runs screen that matches user's profile
@@ -135,7 +132,6 @@ class Analyzer:
         url = logic + "&api_key=OmRhNGVlMTlhZGQ5ZWVmOTdiZTAwOWY3NjNjZGI1OTNi"
 
         if debug:
-            print("Graph builder debug on")
             close_prices = pd.DataFrame(close_px_results.test_close_px)
         else:
             contents = urllib.request.urlopen(url)
@@ -145,7 +141,7 @@ class Analyzer:
 
         close_prices.sort_values(by=['date'], inplace=True, ascending=True)
 
-        GraphBuilder.build_graph(self.company_profile, close_prices)
+        self.img_path = GraphBuilder.build_graph(self.company_profile, close_prices)
 
     def get_standard_fundamentals(self):
 
@@ -217,6 +213,6 @@ class Analyzer:
         elif self.objective == "Risky":
             self.risky_analyzer()
 
-        #self.graph_price()
+        self.graph_price()
         self.get_standard_fundamentals()
         self.report_text()
