@@ -1,0 +1,58 @@
+[
+  {
+    "companyName": "General Electric",
+    "picName": "generalelectric",
+    "shortName": "ig",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "John Deere",
+    "picName": "John Deere",
+    "shortName": "ij",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "Caterpillar",
+    "picName": "Caterpillar",
+    "shortName": "ih",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "NASA",
+    "picName": "nasa",
+    "shortName": "in",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "Woodward",
+    "picName": "woodward",
+    "shortName": "iw",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "Powell Industries",
+    "picName": "powellindustries",
+    "shortName": "ip",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "Lockheed Martin",
+    "picName": "lockheedmartin",
+    "shortName": "il",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  },
+  {
+    "companyName": "Toll Brothers",
+    "picName": "tollbrothers",
+    "shortName": "itb",
+    "sector": "Industrials",
+    "sectorShortName": "is"
+  }
+]

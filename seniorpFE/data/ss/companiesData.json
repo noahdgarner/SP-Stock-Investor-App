@@ -1,0 +1,58 @@
+[
+  {
+    "companyName": "Pepsico",
+    "picName": "pepsico",
+    "shortName": "sp",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "Coca-Cola",
+    "picName": "cocacola",
+    "shortName": "sc",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "Proctor and Gamble",
+    "picName": "proctorandgamble",
+    "shortName": "spg",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "Kroger Company",
+    "picName": "kroger",
+    "shortName": "sk",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "Sysco",
+    "picName": "sysco",
+    "shortName": "sysco",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "Tyson Foods, Inc.",
+    "picName": "tyson",
+    "shortName": "st",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "General Mills",
+    "picName": "generalmills",
+    "shortName": "sg",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  },
+  {
+    "companyName": "Kraft Heinz",
+    "picName": "kraftheinz",
+    "shortName": "skh",
+    "sector": "Consumer Staples",
+    "sectorShortName": "ss"
+  }
+]

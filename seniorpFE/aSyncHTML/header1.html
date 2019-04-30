@@ -1,36 +1,144 @@
 <!--PHP form div -->
-<div class="col-md-12 col-sm-12 col-xs-12">
-    <section class="section text-center">
-        <h3>User Data Input</h3>
-        <div class="container">
-            <form id="contact" action="#" method="POST">
+<div id="header1">
+<h2 id="test" class="text-center">Stock Analyzer</h2>
+<div class="row">
+    <!--Left -->
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="section text-center">
+            <h3>Tell Us About Yourself!</h3>
+            <div id="content1">
+                <form id="contact">
+                    <fieldset>
+                        <span>Enter your First Name Here</span>
+                        <br>
+                        <input id="AINames" placeholder="Your name"
+                               onclick="$autoObject.autocomplete(document.getElementById('AINames'),$autoObject.names)"
+                               type="text" tabindex="1" required autofocus value="Testing"
+                               name="contactName">
+                    </fieldset>
+                    <!--Note the name field, with indexed value. Purpose is for Stringify JSON -->
+                    <fieldset>
+                        <span>Enter your Email Here</span>
+                        <br>
+                        <input placeholder="Your Email Address"
+                               name="contactInfo[email]" tabindex="2" required value="example@gmail.com">
+                    </fieldset>
+                    <!--Note the name field, with indexed value. Purpose is for Stringify JSON -->
+                    <fieldset>
+                        <span>Enter your Phone Number Here</span>
+                        <br>
+                        <input placeholder="Your Phone Number (optional)"
+                               name="contactInfo[telephone]" tabindex="3" value="123456789">
+                    </fieldset>
+                    <!--Note the name field, with indexed value. Purpose is for Stringify JSON -->
+                    <fieldset>
+                        <br>
+                        <input placeholder="Investmest skills 1-10"
+                               name="preferences[skill]" min="1" max="10" type="number" tabindex="4" required>
+                    </fieldset>
+                    <fieldset>
+                        <br>
+                        <!--Note the name field, with indexed value. Purpose is for Stringify JSON -->
+                        <input placeholder="Tolerance from 1-10"
+                               name="preferences[tolerance]" min="1" max="10" type="number" tabindex="5">
+                    </fieldset>
+                    <fieldset>
+                        <br>
+                        <input onclick="$infoObj.change1()" name="submit" type="submit" id="submit1"
+                               data-submit="...Sending">
+                    </fieldset>
+                </form>
 
-                <fieldset>
-                    <input id="AINames" onplaceholder="Your name" type="text" tabindex="1" required autofocus>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <input placeholder="Your Email Address" type="email" tabindex="2" required>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <input placeholder="Your investmest skills 1-10" type="number" tabindex="4" required>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <textarea placeholder="Type your preferences here...." tabindex="5" required></textarea>
-                </fieldset>
-                <br>
-                <fieldset>
-                    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-                </fieldset>
+            </div>
+            <a href="#top">Back to top of page</a>
+        </section>
+    </div>
+    <!--Right -->
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <section class="section text-center">
+            <h3>What Metrics Would you like to Use?</h3>
+            <div id="content2">
+                <form id="metrics" autocomplete="off" action="#">
+                    <fieldset>
+                        <br>
+                        <input id="AICountries" placeholder=" Return on Equity (Y/N)"
+                               type="text" tabindex="1" required
+                               name="ROE">
+                    </fieldset>
 
-            </form>
-        </div>
-        <a href="#top">Back to top of page</a>
-    </section>
+                    <!--TODO Add form features here -->
+                    <fieldset>
+                        <br>
+                        <input id="AINames2" placeholder=" Debt-to-Equity (Y/N)"
+
+                               type="text" tabindex="1" required
+                               name="DTE">
+                    </fieldset>
+
+                    <fieldset>
+                        <br>
+                        <input  placeholder=" P/E (Y/N)"
+                               onclick="$autoObject.autocomplete(document.getElementById('AICountries'),$autoObject.countries)"
+                               type="text" tabindex="1" required
+                               name="PE">
+                    </fieldset>
+                    <fieldset>
+                        <br>
+                        <input onclick="$infoObj.change2()" name="submit" type="submit" id="submit2"
+                               data-submit="...Sending">
+                    </fieldset>
+
+                </form>
+                <br>
+                <p>
+                    <button id="special" class="button" onclick="$infoObj.loadCompanies()">GoTo Sector Select</button>
+                </p>
+                <div>
+                    <p id="jsonData"></p>
+                </div>
+            </div>
+            <a href="#top">Back to top of page</a>
+        </section>
+    </div>
 </div>
+</div>
+<!--Have this function write JSON for each form, and after
+ user selects the companies they want to track.-->
+<script type="text/javascript">
+
+        //working send to Jesse
+        $('#contact').submit(function () {
+            //This serializes contact data into JSON, then turns to string
+            let obj = JSON.stringify($('#contact').serializeObject());
+            //step 2, nodejs. lol.
+
+            /*
+             const fs = require('fs');
+             fs.writeFile('myjsonfile.json', obj, 'utf8', callback);
+            */
+
+            $.post("receiver", obj, function() {});
+
+
+            event.preventDefault();
+
+            console.log(obj);
+            return false;
+        });
+
+
+
+        //working send to Jesse
+        $('#metrics').submit(function () {
+            //This serializes contact data into JSON, then turns to string
+            let obj = JSON.stringify($('#metrics').serializeObject());
+            //step 2, nodejs. lol.
+            /**
+             * TODO: Learn nodejs
+             const fs = require('fs');
+             fs.writeFile('myjsonfile.json', obj, 'utf8', callback);
+             */
+            console.log(obj);
+            return false;
+        });
+</script>

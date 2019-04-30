@@ -1,0 +1,58 @@
+[
+  {
+    "companyName": "Anthem Blue Cross",
+    "picName": "anthembluecross",
+    "shortName": "ha",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "Pfizer",
+    "picName": "pfizer",
+    "shortName": "hp",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "CVS Health",
+    "picName": "cvshealth",
+    "shortName": "hcvs",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "United Health Group",
+    "picName": "unitedhealthgroup",
+    "shortName": "hu",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "WellCare Health",
+    "picName": "wellcarehealth",
+    "shortName": "hw",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "Biogen",
+    "picName": "biogen",
+    "shortName": "hb",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "DaVita",
+    "picName": "davita",
+    "shortName": "hd",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  },
+  {
+    "companyName": "Magellan Health",
+    "picName": "magellanhealth",
+    "shortName": "hm",
+    "sector": "Health Care",
+    "sectorShortName": "hs"
+  }
+]
