@@ -3,8 +3,10 @@ from os import path
 
 from string import Template
 
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+
 
 MY_ADDRESS = 'stockmarketsubscription@gmail.com'
 PASSWORD = 'ajdn2019seniorproject'
@@ -62,7 +64,6 @@ def main():
 
         # add in the message body
         msg.attach(MIMEText(message, 'plain'))
-
         # send the message via the server set up earlier.
         s.send_message(msg)
         del msg
@@ -70,12 +71,14 @@ def main():
     # Terminate the SMTP session and close the connection
     s.quit()
 
-def integrated_test(filename):
+def integrated_test():
 
     basepath = path.dirname(__file__)
     contact_path = path.abspath(path.join(basepath, "contacts.txt"))
 
     message_path = path.abspath(path.join(basepath, "report_test.txt"))
+
+    image_path = path.abspath(path.join(basepath, "graph.png"))
 
     names, emails = get_contacts(contact_path)  # read contacts
     message_template = read_template(message_path)
@@ -98,10 +101,22 @@ def integrated_test(filename):
         # setup the parameters of the message
         msg['From'] = MY_ADDRESS
         msg['To'] = email
-        msg['Subject'] = "This is TEST"
+        msg['Subject'] = "Your Personalized Weekly Stock Research"
 
         # add in the message body
         msg.attach(MIMEText(message, 'plain'))
+        # We reference the image in the IMG SRC attribute by the ID we give it below
+        msgText = MIMEText('<br><img src="cid:image1"><br>One Year Price Chart', 'html')
+        msg.attach(msgText)
+
+        # This example assumes the image is in the current directory
+        fp = open(image_path, 'rb')
+        msgImage = MIMEImage(fp.read())
+        fp.close()
+
+        # Define the image's ID as referenced above
+        msgImage.add_header('Content-ID', '<image1>')
+        # msg.attach(msgImage)
 
         # send the message via the server set up earlier.
         s.send_message(msg)
@@ -112,4 +127,5 @@ def integrated_test(filename):
 
 
 if __name__ == '__main__':
-    main()
+    #main()
+    integrated_test()
