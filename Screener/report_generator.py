@@ -7,7 +7,7 @@ class reportGenerator:
     def __init__(self, user, profile):
 
         self.name = user.firstName
-        self.reasons = profile.reasons
+        self.reasons = profile.finance_reasons
         self.ticker = profile.ticker
 
         #TODO function that generates path

@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import os
+import string, random
 
 
 def build_graph(profile, df):
-
 
     #TODO Make graph more nice
     ticker = profile.ticker
@@ -13,7 +13,9 @@ def build_graph(profile, df):
     ax = plt.gca()
     df.plot(kind='line', x='date', y='adj_close', ax=ax)
 
-    stat_path = 'frontend/static/images/graphs/graph.png'
+    code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
+
+    stat_path = 'frontend/static/images/graphs/' + code +'.png'
 
     save_path = os.path.abspath(os.path.join(stat_path))
 

@@ -7,7 +7,6 @@ import os
 
 debug = False
 
-
 class ReportGenerator:
 
     def __init__(self, profile):
@@ -29,6 +28,7 @@ class Profile:
     def __init__(self, ticker, reasons):
         self.ticker = ticker
         self.reasons = reasons
+        self.finance_reasons = None
 
     def __str__(self):
 

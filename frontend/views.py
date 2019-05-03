@@ -77,7 +77,7 @@ def app(request):
 
     analyzer.analysis()
     profile = analyzer.company_profile
-    generate = reportGenerator(user, profile)
+    generate = reportGenerator(user, analyzer.finance_reasons)
     generate.generate_report()
 
     # path = (analyzer.img_path).split("static/")[1]
