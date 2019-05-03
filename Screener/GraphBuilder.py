@@ -13,9 +13,11 @@ def build_graph(profile, df):
     ax = plt.gca()
     df.plot(kind='line', x='date', y='adj_close', ax=ax)
 
-    path = os.path.abspath(os.path.join('frontend/static/images/graphs/graph.png'))
+    stat_path = 'frontend/static/images/graphs/graph.png'
 
-    print("Saving image in path", path)
-    plt.savefig(path)
+    save_path = os.path.abspath(os.path.join(stat_path))
 
-    return path
+    print("Saving image in path", save_path)
+    plt.savefig(save_path)
+
+    return stat_path

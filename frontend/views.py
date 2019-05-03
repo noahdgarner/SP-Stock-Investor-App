@@ -69,7 +69,6 @@ def app(request):
     print("\n****************************")
     print(fullname, email, risk, level)
 
-
     user = User(fname, lname, risk, level)
 
     user.generate_screen_url()
@@ -81,15 +80,15 @@ def app(request):
     generate = reportGenerator(user, profile)
     generate.generate_report()
 
-
+    # path = (analyzer.img_path).split("static/")[1]
+    print(analyzer.img_path)
+    stat_path = analyzer.img_path.split('static/')[1]
 
     context = {
-        'ticker' : generate.ticker,
-        'english' : generate.written,
 
-
+        'ticker': generate.ticker,
+        'english': generate.written,
+        'graphpath': stat_path
     }
-
-
 
     return render(request, "frontend/output.html", context)
