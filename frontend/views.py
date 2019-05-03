@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import os, random, string
 from Screener.User import User
 from Screener.Analyzer import Analyzer
 from Screener.report_generator import reportGenerator
@@ -6,6 +7,7 @@ from ratelimit.decorators import ratelimit
 from random import randint
 from random import shuffle, random
 from itertools import islice
+from django.template.loader import render_to_string
 # from django.http import HttpResponse
 # Create your views here.
 
@@ -138,4 +140,12 @@ def app(request):
         'graphpath': stat_path
     }
 
+    code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
+
+    stat_path = 'frontend/static/output/' + code + '.html'
+
+    save_path = os.path.abspath(os.path.join(stat_path))
+    content = render_to_string('frontend/output.html', context)
+    with open(save_path, 'w') as static_file:
+        static_file.write(content)
     return render(request, "frontend/output.html", context)
