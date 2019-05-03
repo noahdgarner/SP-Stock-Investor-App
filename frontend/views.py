@@ -13,7 +13,7 @@ def home(request):
 def select(request):
 
     context = {}
-
+    print(request.body.decode("utf-8"))
     return render(request, "frontend/sectorselect.html", context)
 
 def app(request):
