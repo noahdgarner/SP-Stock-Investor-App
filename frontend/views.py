@@ -14,15 +14,11 @@ def home(request):
 
 def select(request):
 
-    context = {}
-    print(request.body.decode("utf-8"))
-    return render(request, "frontend/sectorselect.html", context)
-
-def app(request):
 
     if request.method == "POST":
         full_str = request.body.decode("utf-8")
-        full_str = full_str.split("name=")[1]
+        print(full_str)
+        full_str = full_str.split("&name=")[1]
         name = full_str.split("&email=")[0]
         full_str = full_str.split("&email=")[1]
         email = full_str.split("&level=")[0]
@@ -32,12 +28,34 @@ def app(request):
         risk = int(full_str.split("&signup=")[0])
 
 
-        fname, lname = name.split('+')
+    returnstring = name+"/"+email+'/'+str(risk)+'/'+str(level)
+
+    print(returnstring)
+
+    context = {'userinfo': returnstring}
+
+    return render(request, "frontend/sectorselect.html", context)
+
+def app(request):
+
+    print(request.body.decode("utf-8"))
+
+
+    if request.method == "POST":
+        full_str = request.body.decode("utf-8")
+        full_str = full_str.split("&userinfo=")[1]
+        full_str = full_str.split('&signup=')[0]
+        full_str = full_str.replace("%2F", '/')
+        full_str = full_str.replace("%2540", '@')
+        full_str = full_str.replace("%2B", '+')
+        print(full_str)
+        name, email, risk, level = full_str.split('/')
+        fname, lname = name.split("+")
 
         fullname = fname + " " + lname
 
-        email = email.replace('%40', '@')
-
+        risk = int(risk)
+        level = int(level)
 
     else:
 
@@ -51,6 +69,7 @@ def app(request):
     print("\n****************************")
     print(fullname, email, risk, level)
 
+
     user = User(fname, lname, risk, level)
 
     user.generate_screen_url()
@@ -58,13 +77,17 @@ def app(request):
     analyzer = Analyzer(user.user_to_json())
 
     analyzer.analysis()
-    generate = reportGenerator(user, analyzer.finance_reasons)
+    profile = analyzer.company_profile
+    generate = reportGenerator(user, profile)
     generate.generate_report()
 
 
 
     context = {
-        'english' : generate.written
+        'ticker' : generate.ticker,
+        'english' : generate.written,
+
+
     }
 
 

@@ -1,25 +1,19 @@
-from Screener.Analyzer import Analyzer, Reasons
+from Screener.Analyzer import Analyzer, Reasons, Profile
 from Screener.User import User
 from os import path
 
 class reportGenerator:
 
-    def __init__(self, user, reasons):
+    def __init__(self, user, profile):
 
         self.name = user.firstName
-        self.reasons = reasons
+        self.reasons = profile.reasons
+        self.ticker = profile.ticker
 
         #TODO function that generates path
         self.img_path = "images/graph.png"
         self.report_path = None
         self.written = None
-
-    # class Reasons:
-    #
-    #     def __init__(self, measure, value, language):
-    #         self.measure = measure
-    #         self.value = value
-    #         self.language = language
 
     def generate_report(self):
 

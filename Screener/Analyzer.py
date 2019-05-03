@@ -222,6 +222,6 @@ class Analyzer:
         elif self.objective == "Risky":
             self.risky_analyzer()
 
-        # self.graph_price()
+        self.graph_price()
         self.get_standard_fundamentals()
         self.report_text()

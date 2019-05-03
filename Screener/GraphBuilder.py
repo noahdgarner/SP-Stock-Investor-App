@@ -1,10 +1,6 @@
-from Screener import Analyzer
-
 import matplotlib.pyplot as plt
-import numpy as np
+import os
 
-import pandas as pd
-from datetime import datetime
 
 def build_graph(profile, df):
 
@@ -17,10 +13,9 @@ def build_graph(profile, df):
     ax = plt.gca()
     df.plot(kind='line', x='date', y='adj_close', ax=ax)
 
+    path = os.path.abspath(os.path.join('frontend/static/images/graphs/graph.png'))
 
-
-    path = 'images/graph.png'
-
+    print("Saving image in path", path)
     plt.savefig(path)
 
     return path

@@ -1,5 +1,9 @@
 Dear JesseWe found a company called **COMPANY** that we think might be a good investment for you.
- There are a few characteristics to look before you decide to buy! First, we looked  at ** COMPANY **'s Revenue Growth and we liked their value of 0.341525
-This companies revenue has grown *** in the last year. This is a good sign for companies and happens when they sell more products.We also looked  at ** COMPANY **'s Profit Margin and we liked their value of 0.026619
-A high profit margin is good and indicates how much of each dollar earned is turned into profit. Eventually this means more profit is given to you, the shareholder.We also looked  at ** COMPANY **'s Price to Earnings and we liked their value of 62.129
-Price to earnings is just one number to look at. High price to earnings can mean that the company is overvalued or it means that We also pulled their price movement over the last year which we think you'll find interestingimages/graph.pngAlways be sure to invest wisely!
+ There are a few characteristics to look before you decide to buy! First, we looked  at ** COMPANY **'s beta and we liked their value of 1.4325
+positiveWe also looked  at ** COMPANY **'s fcffgrowth and we liked their value of 1.967868
+positiveWe also looked  at ** COMPANY **'s marketcap and we liked their value of 17568917340.0
+positiveWe also looked  at ** COMPANY **'s pricetobook and we liked their value of 8.424
+positiveWe also looked  at ** COMPANY **'s pricetoearnings and we liked their value of 69.4575
+positiveWe also looked  at ** COMPANY **'s pricetorevenue and we liked their value of 8.7956
+positiveWe also looked  at ** COMPANY **'s revenuegrowth and we liked their value of 0.301771
+positiveWe also pulled their price movement over the last year which we think you'll find interestingimages/graph.pngAlways be sure to invest wisely!

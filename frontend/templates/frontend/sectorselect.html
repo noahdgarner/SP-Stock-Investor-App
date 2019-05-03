@@ -27,9 +27,10 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sector Select</h2>
-                        <form method="POST" action="/select/" class="register-form" id="register-form">
+                        <form method="POST" action="/app/" class="register-form" id="register-form">
                             {% csrf_token %}
 
+                            <input type="hidden" name="userinfo" value= {{ userinfo }} >
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Submit Information"/>
                             </div>
