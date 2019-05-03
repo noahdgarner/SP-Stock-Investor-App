@@ -10,6 +10,11 @@ def home(request):
 
     return render(request, "frontend/index.html", context)
 
+def select(request):
+
+    context = {}
+
+    return render(request, "frontend/sectorselect.html", context)
 
 def app(request):
 
@@ -44,10 +49,10 @@ def app(request):
     print("\n****************************")
     print(fullname, email, risk, level)
 
-    user = User(fname, lname, risk, level)
-
-    user.generate_screen_url()
-    user.run_all_empty_screen()
+    # user = User(fname, lname, risk, level)
+    #
+    # user.generate_screen_url()
+    # user.run_all_empty_screen()
 
     context = {}
 

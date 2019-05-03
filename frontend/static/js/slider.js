@@ -17,4 +17,3 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
-
