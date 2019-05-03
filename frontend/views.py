@@ -78,7 +78,7 @@ def app(request):
 
     analyzer.analysis()
     profile = analyzer.company_profile
-    generate = reportGenerator(user, analyzer.finance_reasons)
+    generate = reportGenerator(user, analyzer.finance_reasons, profile)
     generate.generate_report()
 
     # path = (analyzer.img_path).split("static/")[1]
@@ -86,8 +86,8 @@ def app(request):
     stat_path = analyzer.img_path.split('static/')[1]
 
     context = {
-
-        # 'ticker': generate.ticker,
+        'name': user.firstName,
+        'ticker': generate.ticker,
         'english': generate.written,
         'graphpath': stat_path
     }

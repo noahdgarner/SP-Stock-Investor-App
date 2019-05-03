@@ -4,11 +4,11 @@ from os import path
 
 class reportGenerator:
 
-    def __init__(self, user, reasons):
+    def __init__(self, user, reasons, profile):
 
         self.name = user.firstName
         self.reasons = reasons
-        # self.ticker = profile.ticker
+        self.ticker = profile.ticker
 
         #TODO function that generates path
         self.img_path = "images/graph.png"
