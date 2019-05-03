@@ -30,7 +30,7 @@ class Screen:
         self.url = screen_url.screen_url
 
     def run_screen(self):
-        debug = True
+        debug = False
         if debug:
             self.result = tr.test
 

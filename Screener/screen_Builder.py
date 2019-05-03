@@ -1,5 +1,6 @@
 import pandas as pd
 import xlrd
+import os
 
 
 defensive_basic = [
@@ -22,7 +23,9 @@ class screen_Builder():
         self.objective = objective
         self.sector_medians = []
         self.industry = industry_input
-        self.excel_sheet = pd.read_excel("Financial Values.xlsx", sheet_name="Sheet1")
+
+        excelpath = os.path.abspath(os.path.join('frontend/static/Financial Values.xlsx'))
+        self.excel_sheet = pd.read_excel(excelpath, sheet_name="Sheet1")
         self.api_key = "OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1"
         self.screen_url = None
         self.build_screen()

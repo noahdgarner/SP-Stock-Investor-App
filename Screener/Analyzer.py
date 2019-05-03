@@ -3,7 +3,7 @@ from Screener import test_screen_results, close_px_results, GraphBuilder, data_p
 import urllib.request
 import json
 import datetime
-
+import os
 
 debug = True
 
@@ -50,7 +50,9 @@ class Analyzer:
         self.fundamental_values = []
         self.companies = None
         self.company_profile = None
-        self.excel_sheet = pd.read_excel("Fundamental_Info.xlsx", sheet_name="Sheet1")
+        excelpath = os.path.abspath(os.path.join('frontend/static/Fundamental_Info.xlsx'))
+
+        self.excel_sheet = pd.read_excel(excelpath, sheet_name="Sheet1")
         self.tags = []
         self.finance_reasons = []
         self.img_path = None

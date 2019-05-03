@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from Screener.User import User
 #from django.http import HttpResponse
 # Create your views here.
 
@@ -23,17 +24,30 @@ def app(request):
         full_str = full_str.split("&risk=")[1]
         risk = int(full_str.split("&signup=")[0])
 
-    fname, lname = name.split('+')
 
-    fullname = fname + " " + lname
+        fname, lname = name.split('+')
 
-    email = email.replace('%40', '@')
+        fullname = fname + " " + lname
 
-    print("NEED TO CREATE USER")
-    print(fullname)
-    print(email)
-    print(level)
-    print(risk)
+        email = email.replace('%40', '@')
+
+
+    else:
+
+        fname = "Jesse"
+        lname = "Hill"
+        fullname = fname + " " + lname
+        email = "j_hill14@.pacific.edu"
+        risk = 10
+        level = 1
+
+    print("\n****************************")
+    print(fullname, email, risk, level)
+
+    user = User(fname, lname, risk, level)
+
+    user.generate_screen_url()
+    user.run_all_empty_screen()
 
     context = {}
 
