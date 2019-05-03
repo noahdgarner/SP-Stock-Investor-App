@@ -12,6 +12,7 @@ class reportGenerator:
         #TODO function that generates path
         self.img_path = "images/graph.png"
         self.report_path = None
+        self.written = None
 
     # class Reasons:
     #
@@ -52,7 +53,7 @@ class reportGenerator:
         basepath = path.dirname(__file__)
         filepath = path.abspath(path.join(basepath,"..","EmailClient", "report_test.txt"))
         file = open(filepath, "w")
-        # print(filepath)
+        print(filepath)
 
         file.write(salutation)
         file.write(intro)
@@ -63,5 +64,7 @@ class reportGenerator:
         file.write(px_chart)
         file.write(self.img_path)
         file.write(closing)
+
+        self.written = en_reasons
 
         self.report_path = filepath

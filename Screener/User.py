@@ -12,6 +12,12 @@ class User:
         self.lastname = lname
         self.fullName = fname + " " +lname
         self.risk_number = risk
+
+        if risk <=5:
+            self.risk_profile = "Defensive"
+        elif risk > 5:
+            self.risk_profile = "Risky"
+
         self.risk_score = None
         self.investing_knowledge = knowledge
         self.age = None

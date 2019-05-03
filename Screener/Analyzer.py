@@ -5,7 +5,7 @@ import json
 import datetime
 import os
 
-debug = True
+debug = False
 
 
 class ReportGenerator:
@@ -39,7 +39,7 @@ class Analyzer:
     def __init__(self, user_info):
         # TODO Analyze one screen at a time, so only pass in user profile and one screen. Current setup
         #  will only run the screen that matches the user profile. Ex: UserProfile.Defensive == Screen.Defensive
-        testing = True
+        testing = False
         print("NEW ANALYZER INSTANCE: \n", user_info)
         self.profile_info = user_info['UserInfo']
         self.objective = self.profile_info['risk_profile']
@@ -50,7 +50,12 @@ class Analyzer:
         self.fundamental_values = []
         self.companies = None
         self.company_profile = None
-        excelpath = os.path.abspath(os.path.join('frontend/static/Fundamental_Info.xlsx'))
+
+        if debug:
+           excelpath = "Fundamental_Info.xlsx"
+
+        else:
+            excelpath = os.path.abspath(os.path.join('frontend/static/Fundamental_Info.xlsx'))
 
         self.excel_sheet = pd.read_excel(excelpath, sheet_name="Sheet1")
         self.tags = []
@@ -59,10 +64,12 @@ class Analyzer:
 
 
         # Only runs screen that matches user's profile
-        if not debug:
+        if not testing:
+            print("trying to run screen")
             for i in self.screens:
                 if self.profile_info['risk_profile'] == i['Objective']:
                     self.screen_results = self.run_screen(i)
+                    print("running screen")
 
         else:
             print("Analyzer in Debug")
@@ -215,6 +222,6 @@ class Analyzer:
         elif self.objective == "Risky":
             self.risky_analyzer()
 
-        self.graph_price()
+        # self.graph_price()
         self.get_standard_fundamentals()
         self.report_text()

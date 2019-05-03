@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from Screener.User import User
-#from django.http import HttpResponse
+from Screener.Analyzer import Analyzer
+from Screener.report_generator import reportGenerator
+# from django.http import HttpResponse
 # Create your views here.
 
 
@@ -49,11 +51,22 @@ def app(request):
     print("\n****************************")
     print(fullname, email, risk, level)
 
-    # user = User(fname, lname, risk, level)
-    #
-    # user.generate_screen_url()
-    # user.run_all_empty_screen()
+    user = User(fname, lname, risk, level)
 
-    context = {}
+    user.generate_screen_url()
+
+    analyzer = Analyzer(user.user_to_json())
+
+    analyzer.analysis()
+    generate = reportGenerator(user, analyzer.finance_reasons)
+    generate.generate_report()
+
+
+
+    context = {
+        'english' : generate.written
+    }
+
+
 
     return render(request, "frontend/output.html", context)

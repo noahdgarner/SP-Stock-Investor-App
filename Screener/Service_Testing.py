@@ -70,5 +70,27 @@ def analyzer_tests():
 
     client.integrated_test(generate.report_path)
 
+def django_tests():
 
-analyzer_tests()
+    fname = "Jesse"
+    lname = "Hill"
+    fullname = fname + " " + lname
+    email = "j_hill14@.pacific.edu"
+    risk = 3
+    level = 1
+
+    user = User.User(fname, lname, risk, level)
+
+    user.generate_screen_url()
+    print(user.user_to_json())
+
+    analyzer = Analyzer.Analyzer(user.user_to_json())
+    screen_output = analyzer.screen_results
+    print(screen_output)
+    analyzer.analysis()
+    generate = report_generator.reportGenerator(user, analyzer.finance_reasons)
+    generate.generate_report()
+
+
+django_tests()
+
