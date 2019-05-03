@@ -13,6 +13,7 @@ risky_basic = [
     "revenuegrowth"
 ]
 
+debug = False
 
 class screen_Builder():
 
@@ -24,7 +25,10 @@ class screen_Builder():
         self.sector_medians = []
         self.industry = industry_input
 
-        excelpath = os.path.abspath(os.path.join('frontend/static/Financial Values.xlsx'))
+        if debug:
+            excelpath = "Financial Values.xlsx"
+        else:
+            excelpath = os.path.abspath(os.path.join('frontend/static/Financial Values.xlsx'))
         self.excel_sheet = pd.read_excel(excelpath, sheet_name="Sheet1")
         self.api_key = "OmQ1ZDM5ZGUwYTI4YThiZTI3Mzc1OWZjMjQwZmE0MTM1"
         self.screen_url = None
