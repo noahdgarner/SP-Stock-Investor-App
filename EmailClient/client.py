@@ -1,5 +1,6 @@
 import smtplib
 from os import path
+import config
 
 from string import Template
 
@@ -38,39 +39,6 @@ def read_template(filename):
     return Template(template_file_content)
 
 
-def main():
-    names, emails = get_contacts('contacts.txt')  # read contacts
-    message_template = read_template('message.txt')
-
-    # set up the SMTP server
-    s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-    s.starttls()
-    s.login(MY_ADDRESS, PASSWORD)
-
-    # For each contact, send the email:
-    for name, email in zip(names, emails):
-        msg = MIMEMultipart()  # create a message
-
-        # add in the actual person name to the message template
-        message = message_template.substitute(PERSON_NAME=name.title())
-
-        # Prints out the message body for our sake
-        print(message)
-
-        # setup the parameters of the message
-        msg['From'] = MY_ADDRESS
-        msg['To'] = email
-        msg['Subject'] = "This is TEST"
-
-        # add in the message body
-        msg.attach(MIMEText(message, 'plain'))
-        # send the message via the server set up earlier.
-        s.send_message(msg)
-        del msg
-
-    # Terminate the SMTP session and close the connection
-    s.quit()
-
 def integrated_test():
 
     basepath = path.dirname(__file__)
@@ -79,9 +47,13 @@ def integrated_test():
     message_path = path.abspath(path.join(basepath, "report_test.txt"))
 
     image_path = path.abspath(path.join(basepath, "graph.png"))
+    image1 = "graph.png"
 
     names, emails = get_contacts(contact_path)  # read contacts
     message_template = read_template(message_path)
+
+    report_file = open('E81WN.html')
+    html = report_file.read()
 
     # set up the SMTP server
     s = smtplib.SMTP(host='smtp.gmail.com', port=587)
@@ -104,7 +76,7 @@ def integrated_test():
         msg['Subject'] = "Your Personalized Weekly Stock Research"
 
         # add in the message body
-        msg.attach(MIMEText(message, 'plain'))
+        msg.attach(MIMEText(html, 'html'))
         # We reference the image in the IMG SRC attribute by the ID we give it below
         msgText = MIMEText('<br><img src="cid:image1"><br>One Year Price Chart', 'html')
         msg.attach(msgText)
