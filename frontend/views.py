@@ -2,6 +2,8 @@ from django.shortcuts import render
 from Screener.User import User
 from Screener.Analyzer import Analyzer
 from Screener.report_generator import reportGenerator
+from ratelimit.decorators import ratelimit
+
 # from django.http import HttpResponse
 # Create your views here.
 
@@ -36,10 +38,9 @@ def select(request):
 
     return render(request, "frontend/sectorselect.html", context)
 
+
+@ratelimit(key='ip', rate='500/s')
 def app(request):
-
-    print(request.body.decode("utf-8"))
-
 
     if request.method == "POST":
         full_str = request.body.decode("utf-8")
@@ -86,7 +87,7 @@ def app(request):
 
     context = {
 
-        'ticker': generate.ticker,
+        # 'ticker': generate.ticker,
         'english': generate.written,
         'graphpath': stat_path
     }
