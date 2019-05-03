@@ -20,8 +20,10 @@ def select(request):
     if request.method == "POST":
         full_str = request.body.decode("utf-8")
         print(full_str)
-        full_str = full_str.split("&name=")[1]
-        name = full_str.split("&email=")[0]
+        full_str = full_str.split("&fname=")[1]
+        fname = full_str.split("&lname=")[0]
+        full_str = full_str.split("&lname=")[1]
+        lname = full_str.split("&email=")[0]
         full_str = full_str.split("&email=")[1]
         email = full_str.split("&level=")[0]
         full_str = full_str.split("&level=")[1]
@@ -29,6 +31,8 @@ def select(request):
         full_str = full_str.split("&risk=")[1]
         risk = int(full_str.split("&signup=")[0])
 
+
+    name = fname + "+" + lname
 
     returnstring = name+"/"+email+'/'+str(risk)+'/'+str(level)
 
