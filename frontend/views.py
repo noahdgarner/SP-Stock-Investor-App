@@ -3,7 +3,9 @@ from Screener.User import User
 from Screener.Analyzer import Analyzer
 from Screener.report_generator import reportGenerator
 from ratelimit.decorators import ratelimit
-
+from random import randint
+from random import shuffle, random
+from itertools import islice
 # from django.http import HttpResponse
 # Create your views here.
 
@@ -31,6 +33,13 @@ def select(request):
         full_str = full_str.split("&risk=")[1]
         risk = int(full_str.split("&signup=")[0])
 
+    else:
+
+        fname = "Test"
+        lname ="Test"
+        email = "test"
+        risk =5
+        level = 5
 
     name = fname + "+" + lname
 
@@ -38,16 +47,49 @@ def select(request):
 
     print(returnstring)
 
-    context = {'userinfo': returnstring}
+    tickers = ({"name": 'DollarTree', "ticker": 'DLTR', "SIC": "5331"},
+               {"name": 'Duke Reality',"ticker": 'DRE', "SIC": "6531"},
+               {"name": 'Macys',"ticker": 'M', "SIC": "5311"},
+               {"name": 'Nvidia',"ticker": 'NVDA', "SIC": "3674"},
+               {"name": 'Microsoft', "ticker": 'MSFT', "SIC": "7389"},
+               {"name": 'Capital One', "ticker": 'COF', "SIC": "6021"},
+               {"name": 'General Mills', "ticker": 'GIS', "SIC": "5141"},
+               {"name": 'Pepsico', "ticker": 'PEP', "SIC": "2086"},
+               {"name": 'Sysco', "ticker": 'SYY', "SIC": "5149"},
+               {"name": 'Google', "ticker": 'GOOGL', "SIC": "7374"},
+               )
+
+    generated = [];
+    s1 = list();
+    cont = True
+
+    while cont:
+        aNum = randint(0, 9)
+        if (aNum not in generated):
+            s1.append(tickers[aNum])
+            generated.append(aNum)
+        if(len(s1) == 4):
+            cont = False
+
+
+
+
+    context = {'userinfo': returnstring,
+               'tickers': s1
+               }
 
     return render(request, "frontend/sectorselect.html", context)
+
 
 
 @ratelimit(key='ip', rate='500/s')
 def app(request):
 
+
+
     if request.method == "POST":
         full_str = request.body.decode("utf-8")
+        print(full_str)
         full_str = full_str.split("&userinfo=")[1]
         full_str = full_str.split('&signup=')[0]
         full_str = full_str.replace("%2F", '/')

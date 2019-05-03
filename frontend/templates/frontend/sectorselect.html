@@ -1,5 +1,5 @@
 {% load static %}
-
+{% static "" as baseURL %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +30,26 @@
                         <form method="POST" action="/app/" class="register-form" id="register-form">
                             {% csrf_token %}
 
+                            {% if tickers %}
+
+                                <ul>
+                                    {% for result in tickers %}
+                                        <div class="result_item">
+                                            <div class="row">
+                                                <li class="litext">
+                                                    <img onclick="$infoObj.mark(this);" name={{ result.SIC }} src="{{baseURL }}images/selectLogos/{{ result.ticker }}.jpg">
+                                                    <p>{{ result.SIC }}</p>
+                                                </li>
+                                            </div>
+
+                                        </div>
+                                    {% endfor %}
+                                </ul>
+
+                            {% else %}
+                                <p> No tickers found...</p>
+                            {% endif %}
+
                             <input type="hidden" name="userinfo" value= {{ userinfo }} >
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Submit Information"/>
@@ -37,17 +57,19 @@
                         </form>
                     </div>
                     <div class="signup-image">
-                        <figure><img src='https://i.pinimg.com/originals/83/fd/36/83fd36a3daab3596a29973ff2e55ce9a.png' alt="image"></figure>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- JS -->
+
+
+    <!-- JS, must include with this notation because Django -->
     <script src='{% static "vendor/jquery/jquery.min.js" %}'></script>
     <script src='{% static "js/main.js" %}'></script>
     <script src='{% static "js/slider.js" %}'></script>
+    <script src='{% static "js/script.js" %}'></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
