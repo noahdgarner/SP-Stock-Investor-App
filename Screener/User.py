@@ -20,9 +20,6 @@ class User:
         self.industry_preference = None # []
         self.screens = {"Risky": None, "Moderate": None, "Defensive": None}
 
-
-    # User.User("Defensive", "low", "high", "REITs")
-
     def setup_profile(self, risk_profile=5, investing_knowledge=0, interests="Tech"):
 
         self.risk_profile = risk_profile
